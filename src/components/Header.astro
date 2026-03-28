@@ -1,0 +1,28 @@
+﻿---
+const links = [
+  { href: "/solutions/", label: "Solutions" },
+  { href: "/industries/", label: "Industries" },
+  { href: "/about/", label: "About" },
+  { href: "/blog/", label: "Insights" },
+  { href: "/apply/", label: "Apply", primary: true },
+];
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/">
+      <span class="logo__mark" aria-hidden="true">SP</span>
+      <span>Solvanta Pay</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {links.map((l) => (
+        l.primary ? (
+          <a class="btn btn--primary" href={l.href}>
+            {l.label}
+          </a>
+        ) : (
+          <a href={l.href}>{l.label}</a>
+        )
+      ))}
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+<BaseLayout
+  title="Insights | Solvanta Pay"
+  description="Articles on high-risk processing, chargebacks, reserves, and underwriting readiness."
+>
+  <section class="section">
+    <div class="container">
+      <h1 style="margin-bottom: 0.5rem;">Insights</h1>
+      <p class="muted" style="max-width: 62ch;">
+        Educational articles for operators — not legal advice. Replace stubs with final copy.
+      </p>
+      <ul style="list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem;">
+        {posts.map((post) => (
+          <li class="card">
+            <a href={`/blog/${post.id.replace(/\.md$/, "")}/`} style="text-decoration: none; color: inherit;">
+              <h2 style="margin: 0 0 0.35rem; font-size: 1.25rem;">{post.data.title}</h2>
+              <p class="muted" style="margin: 0;">
+                {post.data.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top: 2rem;">
+        <a href="/rss.xml">RSS feed</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+

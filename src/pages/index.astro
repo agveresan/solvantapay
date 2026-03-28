@@ -1,0 +1,121 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSiteUrl } from "../lib/site";
+
+const site = getSiteUrl();
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Solvanta Pay",
+  url: site,
+  description:
+    "Payment processing for high-risk merchants — underwriting, compliance, and reliable settlement workflows.",
+};
+const webLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Solvanta Pay",
+  url: site,
+};
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is high-risk merchant processing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "It is card acceptance for businesses in regulated, disputed, or elevated chargeback verticals where issuers and acquirers apply stricter underwriting and monitoring.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Are online quotes guaranteed?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "No. Any indicative range depends on underwriting, bank partner appetite, and risk review. Final pricing is confirmed after application review.",
+      },
+    },
+  ],
+};
+---
+<BaseLayout
+  title="Solvanta Pay | High-risk merchant payment processing"
+  description="Underwriting-minded payment processing for high-risk merchants. Clear pricing conversations, compliance-aware onboarding, and dependable operations."
+  jsonLd={[orgLd, webLd, faqLd]}
+>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">High-risk specialists</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 1rem 0;">
+          Payments that feel controlled — even when your vertical is not.
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Solvanta Pay helps serious operators stabilize card acceptance with underwriting-aware onboarding,
+          transparent fee conversations, and operational discipline.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href="/apply/">Start an application</a>
+          <a class="btn btn--ghost" href="/solutions/">View solutions</a>
+        </div>
+      </div>
+      <div class="card card--glass">
+        <div class="eyebrow">What we optimize for</div>
+        <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+          <li>Chargeback posture and monitoring readiness</li>
+          <li>Reserve and settlement clarity</li>
+          <li>Compliance-friendly customer communication</li>
+          <li>Reliable processing relationships</li>
+        </ul>
+        <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+          Content on this site is informational and not legal advice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for tricky verticals — without sounding risky</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Placeholder section: replace with your differentiated story, proof points, and process narrative.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Underwriting-first</h3>
+          <p class="muted">We align expectations early so applications move with fewer surprises.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Operational clarity</h3>
+          <p class="muted">Reserves, fees, and monitoring requirements explained in plain language.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Merchant-friendly tone</h3>
+          <p class="muted">Professional copy and support paths that respect operator time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 1rem;">Questions merchants ask</h2>
+      <div class="card prose">
+        <h3 style="font-size: 1.1rem;">What is high-risk merchant processing?</h3>
+        <p>
+          It is card acceptance for businesses in regulated, disputed, or elevated chargeback verticals where
+          issuers and acquirers apply stricter underwriting and monitoring.
+        </p>
+        <h3 style="font-size: 1.1rem;">Are online quotes guaranteed?</h3>
+        <p>
+          No. Any indicative range depends on underwriting, bank partner appetite, and risk review. Final
+          pricing is confirmed after application review.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

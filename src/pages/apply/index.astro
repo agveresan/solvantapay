@@ -1,0 +1,21 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ApplyWizard from "../../components/ApplyWizard";
+---
+<BaseLayout
+  title="Apply | Solvanta Pay"
+  description="Multi-step merchant application with an indicative, non-binding quote. Underwriting determines final pricing."
+>
+  <section class="section">
+    <div class="container">
+      <h1 style="margin-bottom: 0.5rem;">Merchant application</h1>
+      <p class="muted" style="max-width: 62ch;">
+        Provide accurate information so we can respond quickly. Indicative ranges are not offers and may change after
+        underwriting.
+      </p>
+      <div style="margin-top: 2rem;">
+        <ApplyWizard client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
