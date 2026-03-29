@@ -66,7 +66,7 @@ Use these **names exactly** (GitHub secret names are case-sensitive):
 
 | Secret name | What to paste |
 |-------------|----------------|
-| `FTP_SERVER` | The **FTP hostname only** (no `ftp://`, no path). Example: `ftp.yourdomain.com` |
+| `FTP_SERVER` | The **FTP hostname only** — **not** a URL. No `ftp://`, no `https://`, no path, no spaces. Example: `ftp.solvantapay.com` (copy the host line from Site Tools exactly; if deploy fails with `ENOTFOUND`, this value is almost always wrong). |
 | `FTP_PORT` | The **port number** SiteGround gives you (digits only). Often **`21`** for FTP. |
 | `FTP_USERNAME` | The **FTP username** from Step 2. |
 | `FTP_PASSWORD` | The **FTP password** from Step 2. |
@@ -117,8 +117,10 @@ Open your domain in a browser. You may need to wait a minute or hard-refresh (**
 
 | Problem | What to try |
 |--------|--------------|
+| **`getaddrinfo ENOTFOUND`** | DNS cannot resolve your FTP host. Almost always **`FTP_SERVER` is wrong**. Fix: open the **`FTP_SERVER`** secret and set it to the **hostname only** — no `ftp://`, no `https://`, no path, no trailing slash, no spaces. Example: `ftp.solvantapay.com` or whatever Site Tools shows next to **FTP hostname**. Do **not** paste the full URL from a browser. Re-save the secret and re-run the workflow. |
 | **Login / authentication failed** | Re-copy username and password; reset FTP password in Site Tools; ensure no extra spaces in secrets. |
 | **Could not connect / timeout** | Confirm `FTP_SERVER` is the hostname from Site Tools (not your domain registrar). Check SiteGround status; try from another network to rule out local firewall. |
+| **Node.js 20 deprecation warning** | The workflow sets `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` so Actions uses Node 24 for JavaScript-based actions. You can ignore residual notices until action authors ship Node 24 builds. |
 | **Files uploaded but site unchanged** | Wrong `server-dir` or wrong FTP account (subdomain folder). Confirm in Site Tools which folder that domain uses. |
 | **FTPS vs FTP** | SiteGround often supports both. If plain FTP fails, we can switch the workflow to **FTPS** (this action supports `ftp` / `ftps` / `ftps-legacy`). |
 | **Port is 22 (SFTP)** | Port **22** is usually **SFTP** (SSH), not FTP. The [FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action) does **not** support SFTP. Use **`FTP_PORT` = `21`** with normal FTP, or ask us to switch the workflow to an SFTP-based upload. |

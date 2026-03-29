@@ -12,6 +12,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    # Use Node 24 for JS actions (checkout, setup-node, FTP deploy) — avoids Node 20 deprecation warnings
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,6 +22,19 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - name: Validate FTP server hostname (prevents ENOTFOUND)
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -z "${FTP_SERVER:-}" ]; then
+            echo "::error::Secret FTP_SERVER is empty. Add it under Settings → Secrets → Actions."
+            exit 1
+          fi
+          if printf '%s' "$FTP_SERVER" | grep -qE '^(ftp|http|https)://|[[:space:]]|/'; then
+            echo "::error::FTP_SERVER must be the hostname only — no ftp://, no http://, no path, no spaces."
+            echo "Example: ftp.solvantapay.com or the exact host shown in Site Tools → FTP."
+            exit 1
+          fi
       - name: Build
         env:
           PUBLIC_APPLY_URL: ${{ secrets.PUBLIC_APPLY_URL }}
