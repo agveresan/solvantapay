@@ -1,0 +1,47 @@
+<div
+  class="cookie-consent"
+  id="cookie-consent"
+  role="dialog"
+  aria-label="Cookie preferences"
+  aria-live="polite"
+>
+  <div class="cookie-consent__inner container">
+    <p class="cookie-consent__text">
+      We use cookies and similar technologies to run this site and, with your permission, to understand how it is
+      used. See our <a href="/privacy/">Privacy</a> policy. You can change your mind anytime.
+    </p>
+    <div class="cookie-consent__actions">
+      <button type="button" class="btn btn--ghost cookie-consent__btn" data-cookie-choice="declined">
+        Decline
+      </button>
+      <button type="button" class="btn btn--primary cookie-consent__btn" data-cookie-choice="accepted">
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = "solvantapay_cookie_consent";
+    function setConsent(value) {
+      try {
+        localStorage.setItem(STORAGE_KEY, value);
+      } catch (e) {}
+      document.documentElement.classList.add("cookie-consent-resolved");
+      try {
+        document.dispatchEvent(
+          new CustomEvent("solvantapay:cookie-consent", { detail: { value: value } }),
+        );
+      } catch (e) {}
+    }
+    var root = document.getElementById("cookie-consent");
+    if (!root) return;
+    root.querySelectorAll("[data-cookie-choice]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var value = btn.getAttribute("data-cookie-choice");
+        if (value === "accepted" || value === "declined") setConsent(value);
+      });
+    });
+  })();
+</script>

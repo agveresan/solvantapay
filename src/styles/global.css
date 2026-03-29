@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --color-primary: #0b1e3f;
   --color-secondary: #1f8a9e;
   --color-accent: #4cc9c1;
@@ -316,4 +316,49 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.25rem;
+}
+
+.cookie-consent {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 0.75rem 0 max(0.75rem, env(safe-area-inset-bottom));
+  background: rgba(247, 249, 252, 0.92);
+  border-top: 1px solid rgba(11, 30, 63, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 24px rgba(11, 30, 63, 0.06);
+}
+
+html.cookie-consent-resolved .cookie-consent {
+  display: none;
+}
+
+.cookie-consent__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+
+.cookie-consent__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-neutral-dark);
+  max-width: min(56ch, 100%);
+}
+
+.cookie-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cookie-consent__btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
 }
