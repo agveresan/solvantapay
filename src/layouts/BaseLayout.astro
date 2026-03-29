@@ -12,6 +12,7 @@ type Props = {
 };
 
 const { title, description, jsonLd } = Astro.props;
+const noIndex = import.meta.env.PUBLIC_NO_INDEX !== "false";
 const site = getSiteUrl();
 const canonicalUrl = new URL(Astro.url.pathname, site).href;
 const ld = jsonLd
@@ -29,6 +30,7 @@ const ld = jsonLd
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
