@@ -52,7 +52,7 @@ Summary:
 1. In Site Tools, get **FTP hostname**, **username**, and **password** (see the guide).
 2. In the GitHub repo: **Settings → Secrets and variables → Actions**, add `FTP_SERVER`, `FTP_PORT`, `FTP_USERNAME`, `FTP_PASSWORD` (and optionally `PUBLIC_APPLY_URL`, `PUBLIC_SITE_URL`).
 3. Push to **`main`** or use **Actions → Deploy static site to SiteGround → Run workflow**.
-4. Adjust `server-dir` in [`.github/workflows/deploy-siteground.yml`](.github/workflows/deploy-siteground.yml) if your web root is not `public_html`.
+4. Remote path defaults to **`solvantapay.com/public_html/`** on the server (SiteGround). Override with repo variable **`FTP_SERVER_DIR`** if your layout differs (see [DEPLOY-SITEGROUND.md](./DEPLOY-SITEGROUND.md)).
 
 **Apply API:** the static site does not run Node. Host `server/index.ts` separately (e.g. Render, Railway, Fly.io, or a small VPS) and set production `PUBLIC_APPLY_URL` as a **secret** so the build embeds the correct endpoint.
 

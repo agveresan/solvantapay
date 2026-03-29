@@ -1,6 +1,8 @@
 # Plan A: build on GitHub Actions, upload dist/ via FTP.
 # Required repo secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_PORT
 # Optional: PUBLIC_APPLY_URL, PUBLIC_SITE_URL (see DEPLOY-SITEGROUND.md)
+# Remote path: SiteGround often uses domain/public_html/ (not account-root public_html).
+# Override with repo variable FTP_SERVER_DIR if your layout differs (Settings → Variables → Actions).
 
 name: Deploy static site to SiteGround
 
@@ -48,5 +50,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
-          server-dir: ./public_html/
+          # solvantapay.com/public_html = live web root on many SiteGround accounts (see DEPLOY-SITEGROUND.md)
+          server-dir: ${{ vars.FTP_SERVER_DIR || './solvantapay.com/public_html/' }}
           dangerous-clean-slate: false
