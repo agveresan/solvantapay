@@ -1,4 +1,4 @@
-﻿# Solvanta Pay — marketing site
+# Solvanta Pay — marketing site
 
 Static Astro site for **Solvanta Pay** (high-risk merchant payment processing): MDX-ready content layer, SEO metadata, RSS, multi-step **Apply** wizard, and a small **Express** API for server-side quotes + Resend email.
 
@@ -45,12 +45,16 @@ Output: `dist/` — deploy this folder to SiteGround (or any static host).
 
 ## Deploy (GitHub → SiteGround)
 
-1. Push this repo to GitHub.
-2. Add secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` (from Site Tools → FTP).
-3. Adjust `server-dir` in `.github/workflows/deploy-siteground.yml` if your web root is not `public_html`.
-4. The workflow runs `npm ci`, `npm run build`, then uploads `dist/` via FTP.
+**Step-by-step checklist:** see **[DEPLOY-SITEGROUND.md](./DEPLOY-SITEGROUND.md)** (FTP secrets in GitHub, then push to `main` or run the workflow manually).
 
-**Apply API:** the static site does not run Node. Host `server/index.ts` separately (e.g. Render, Railway, Fly.io, or a small VPS) and set production `PUBLIC_APPLY_URL` in the **build** environment so the wizard posts to your live API.
+Summary:
+
+1. In Site Tools, get **FTP hostname**, **username**, and **password** (see the guide).
+2. In the GitHub repo: **Settings → Secrets and variables → Actions**, add `FTP_SERVER`, `FTP_PORT`, `FTP_USERNAME`, `FTP_PASSWORD` (and optionally `PUBLIC_APPLY_URL`, `PUBLIC_SITE_URL`).
+3. Push to **`main`** or use **Actions → Deploy static site to SiteGround → Run workflow**.
+4. Adjust `server-dir` in [`.github/workflows/deploy-siteground.yml`](.github/workflows/deploy-siteground.yml) if your web root is not `public_html`.
+
+**Apply API:** the static site does not run Node. Host `server/index.ts` separately (e.g. Render, Railway, Fly.io, or a small VPS) and set production `PUBLIC_APPLY_URL` as a **secret** so the build embeds the correct endpoint.
 
 ## Project structure
 
@@ -66,10 +70,6 @@ Privacy/Terms pages are **placeholders**. Have counsel review before collecting 
 
 Indicative quotes are **not binding**; copy and UI reinforce this throughout.
 
-### GitHub Actions secrets
+### GitHub Actions secrets (details)
 
-Add these repository secrets for the deploy workflow:
-
-- `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` — SiteGround FTP/SFTP credentials
-- `PUBLIC_APPLY_URL` — full URL of your hosted apply API (e.g. `https://api.example.com/apply`), **required at build time** so the wizard embeds the correct endpoint
-- `PUBLIC_SITE_URL` (optional) — canonical site URL if it differs from `astro.config.mjs` `site`
+See **[DEPLOY-SITEGROUND.md](./DEPLOY-SITEGROUND.md)** for screenshots-style instructions and troubleshooting.

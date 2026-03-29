@@ -1,8 +1,13 @@
-﻿name: Deploy static site to SiteGround
+# Plan A: build on GitHub Actions, upload dist/ via FTP.
+# Required repo secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_PORT
+# Optional: PUBLIC_APPLY_URL, PUBLIC_SITE_URL (see DEPLOY-SITEGROUND.md)
+
+name: Deploy static site to SiteGround
 
 on:
   push:
     branches: [main]
+  workflow_dispatch: # lets you run deploy manually from Actions tab
 
 jobs:
   build-and-deploy:
@@ -25,6 +30,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
           server-dir: ./public_html/
           dangerous-clean-slate: false
