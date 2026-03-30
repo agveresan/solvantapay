@@ -52,12 +52,29 @@ const latestArticles = posts.slice(1, 3);
     const panel = document.getElementById("mega-industries");
     if (!btn || !panel) return;
 
+    var openTimer = 0;
+    var closeTimer = 0;
+    var HOVER_OPEN_MS = 140;
+    var HOVER_CLOSE_MS = 220;
+    var hoverMenu =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    function clearTimers() {
+      if (openTimer) clearTimeout(openTimer);
+      if (closeTimer) clearTimeout(closeTimer);
+      openTimer = 0;
+      closeTimer = 0;
+    }
+
     function close() {
+      clearTimers();
       panel.hidden = true;
       btn.setAttribute("aria-expanded", "false");
     }
 
     function open() {
+      clearTimers();
       panel.hidden = false;
       btn.setAttribute("aria-expanded", "true");
     }
@@ -67,10 +84,47 @@ const latestArticles = posts.slice(1, 3);
       else close();
     }
 
+    function scheduleOpen() {
+      clearTimeout(closeTimer);
+      closeTimer = 0;
+      clearTimeout(openTimer);
+      openTimer = setTimeout(function () {
+        openTimer = 0;
+        open();
+      }, HOVER_OPEN_MS);
+    }
+
+    function scheduleClose() {
+      clearTimeout(openTimer);
+      openTimer = 0;
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () {
+        closeTimer = 0;
+        close();
+      }, HOVER_CLOSE_MS);
+    }
+
+    function cancelScheduledClose() {
+      clearTimeout(closeTimer);
+      closeTimer = 0;
+    }
+
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
       toggle();
     });
+
+    if (hoverMenu) {
+      btn.addEventListener("mouseenter", scheduleOpen);
+      btn.addEventListener("mouseleave", scheduleClose);
+      panel.addEventListener("mouseenter", function () {
+        clearTimeout(openTimer);
+        openTimer = 0;
+        cancelScheduledClose();
+        open();
+      });
+      panel.addEventListener("mouseleave", scheduleClose);
+    }
 
     document.addEventListener("click", function (e) {
       var t = e.target;
