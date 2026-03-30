@@ -12,5 +12,15 @@ export default defineConfig({
   build: {
     inlineStylesheets: "always",
   },
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        jpeg: { mozjpeg: true },
+        webp: { effort: 6, alphaQuality: 80 },
+        avif: { effort: 4, chromaSubsampling: "4:2:0" },
+      },
+    },
+  },
   integrations: [react(), mdx(), ...(noIndex ? [] : [sitemap()])],
 });

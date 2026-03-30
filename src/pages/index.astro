@@ -1,5 +1,7 @@
-﻿---
+---
+import { Picture } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import heroVisual from "../assets/images/hero-placeholder.png";
 import { getSiteUrl } from "../lib/site";
 
 const site = getSiteUrl();
@@ -63,17 +65,31 @@ const faqLd = {
           <a class="btn btn--ghost" href="/solutions/">View solutions</a>
         </div>
       </div>
-      <div class="card card--glass">
-        <div class="eyebrow">What we optimize for</div>
-        <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
-          <li>Chargeback posture and monitoring readiness</li>
-          <li>Reserve and settlement clarity</li>
-          <li>Compliance-friendly customer communication</li>
-          <li>Reliable processing relationships</li>
-        </ul>
-        <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
-          Content on this site is informational and not legal advice.
-        </p>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">What we optimize for</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Chargeback posture and monitoring readiness</li>
+            <li>Reserve and settlement clarity</li>
+            <li>Compliance-friendly customer communication</li>
+            <li>Reliable processing relationships</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Content on this site is informational and not legal advice.
+          </p>
+        </div>
       </div>
     </div>
   </section>

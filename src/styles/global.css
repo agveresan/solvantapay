@@ -173,6 +173,20 @@ a:hover {
   }
 }
 
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero__visual {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
 .pill {
   display: inline-block;
   padding: 0.35rem 0.85rem;
