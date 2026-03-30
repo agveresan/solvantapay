@@ -1,0 +1,102 @@
+---
+/**
+ * Sitewide: Industries mega-menu (hover delay + click toggle).
+ * Lives in BaseLayout so it runs once after the full DOM, every page.
+ */
+---
+<script is:inline>
+  (function () {
+    function init() {
+      const btn = document.getElementById("nav-industries-trigger");
+      const panel = document.getElementById("mega-industries");
+      if (!btn || !panel) return;
+
+      const hoverZone = btn.closest("[data-mega-hover]") || btn;
+
+      var openTimer = 0;
+      var closeTimer = 0;
+      var HOVER_OPEN_MS = 120;
+      var HOVER_CLOSE_MS = 260;
+
+      function clearTimers() {
+        if (openTimer) clearTimeout(openTimer);
+        if (closeTimer) clearTimeout(closeTimer);
+        openTimer = 0;
+        closeTimer = 0;
+      }
+
+      function close() {
+        clearTimers();
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+      }
+
+      function open() {
+        clearTimers();
+        panel.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+      }
+
+      function toggle() {
+        if (panel.hidden) open();
+        else close();
+      }
+
+      function scheduleOpen() {
+        clearTimeout(closeTimer);
+        closeTimer = 0;
+        clearTimeout(openTimer);
+        openTimer = setTimeout(function () {
+          openTimer = 0;
+          open();
+        }, HOVER_OPEN_MS);
+      }
+
+      function scheduleClose() {
+        clearTimeout(openTimer);
+        openTimer = 0;
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+          closeTimer = 0;
+          close();
+        }, HOVER_CLOSE_MS);
+      }
+
+      function cancelScheduledClose() {
+        clearTimeout(closeTimer);
+        closeTimer = 0;
+      }
+
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        toggle();
+      });
+
+      hoverZone.addEventListener("mouseenter", scheduleOpen);
+      hoverZone.addEventListener("mouseleave", scheduleClose);
+      panel.addEventListener("mouseenter", function () {
+        clearTimeout(openTimer);
+        openTimer = 0;
+        cancelScheduledClose();
+        open();
+      });
+      panel.addEventListener("mouseleave", scheduleClose);
+
+      document.addEventListener("click", function (e) {
+        var t = e.target;
+        if (!t || panel.hidden) return;
+        if (t instanceof Node && !panel.contains(t) && !btn.contains(t)) close();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !panel.hidden) close();
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+</script>

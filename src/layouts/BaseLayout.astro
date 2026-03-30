@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CookieConsent from "../components/CookieConsent.astro";
 import ClarityConsent from "../components/ClarityConsent";
+import SiteNavMegaMenuScript from "../components/SiteNavMegaMenuScript.astro";
 import { getSiteUrl } from "../lib/site";
 
 type Props = {
@@ -72,6 +73,7 @@ const ld = jsonLd
     <Footer />
     <CookieConsent />
     <ClarityConsent client:load />
+    <SiteNavMegaMenuScript />
   </body>
 </html>
 

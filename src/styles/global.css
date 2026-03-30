@@ -61,10 +61,16 @@ a:hover {
   margin-inline: auto;
 }
 
+body > main {
+  position: relative;
+  z-index: 0;
+}
+
 .site-header-shell {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 200;
+  isolation: isolate;
 }
 
 .site-header-shell .site-header {
@@ -183,7 +189,7 @@ a:hover {
   background: #fff;
   border-bottom: 1px solid rgba(11, 30, 63, 0.08);
   box-shadow: 0 16px 40px rgba(11, 30, 63, 0.1);
-  z-index: 55;
+  z-index: 210;
 }
 
 .mega-menu[hidden] {
