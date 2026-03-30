@@ -1,0 +1,14 @@
+---
+/**
+ * Reusable two-column mega-menu body: main + gray sidebar.
+ * Use named slots for future nav dropdowns (e.g. Solutions).
+ */
+---
+<div class="mega-menu__inner">
+  <div class="mega-menu__main">
+    <slot name="main" />
+  </div>
+  <aside class="mega-menu__sidebar" aria-label="Featured and latest articles">
+    <slot name="sidebar" />
+  </aside>
+</div>

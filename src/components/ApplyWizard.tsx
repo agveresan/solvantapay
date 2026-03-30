@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import {
   applicationSchema,
@@ -63,6 +63,18 @@ export default function ApplyWizard() {
     if (!parsed.success) return null;
     return computeIndicativeQuote(parsed.data);
   }, [data]);
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get("industry");
+      if (!raw) return;
+      const decoded = decodeURIComponent(raw);
+      setData((d) => (d.industry === "" ? { ...d, industry: decoded } : d));
+    } catch {
+      /* ignore malformed query */
+    }
+  }, []);
 
   function setField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setData((d) => ({ ...d, [key]: value }));

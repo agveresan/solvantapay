@@ -1,0 +1,78 @@
+---
+import type { CollectionEntry } from "astro:content";
+import MegaMenuShell from "./MegaMenuShell.astro";
+import IndustryIconTile from "./IndustryIconTile.astro";
+import { industriesByRisk } from "../lib/industries";
+
+type Props = {
+  featured: CollectionEntry<"blog"> | undefined;
+  latestArticles: CollectionEntry<"blog">[];
+};
+
+const { featured, latestArticles } = Astro.props;
+
+function blogHref(post: CollectionEntry<"blog">) {
+  return `/blog/${post.id.replace(/\.md$/, "")}/`;
+}
+
+const low = industriesByRisk("low");
+const high = industriesByRisk("high");
+let iconIndex = 0;
+---
+<MegaMenuShell>
+  <div slot="main">
+    <div class="mega-menu__tier">
+      <p class="mega-menu__tier-title">Low-risk</p>
+      <div class="mega-menu__grid">
+        {low.map((ind) => {
+          const idx = iconIndex++;
+          return (
+            <a class="mega-menu__link" href={`/industries/${ind.slug}/`}>
+              <IndustryIconTile variant={idx} />
+              <span class="mega-menu__link-text">{ind.title}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+    <div class="mega-menu__tier">
+      <p class="mega-menu__tier-title">High-risk</p>
+      <div class="mega-menu__grid">
+        {high.map((ind) => {
+          const idx = iconIndex++;
+          return (
+            <a class="mega-menu__link" href={`/industries/${ind.slug}/`}>
+              <IndustryIconTile variant={idx} />
+              <span class="mega-menu__link-text">{ind.title}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+    <a class="mega-menu__footer-link" href="/industries/">View all →</a>
+  </div>
+  <div slot="sidebar">
+    {
+      featured && (
+        <a class="mega-menu__featured" href={blogHref(featured)}>
+          <p class="mega-menu__featured-eyebrow">Featured</p>
+          <p class="mega-menu__featured-title">{featured.data.title}</p>
+        </a>
+      )
+    }
+    <p class="mega-menu__articles-head">Latest articles</p>
+    {
+      latestArticles.length === 0 ? (
+        <p class="muted" style="margin: 0; font-size: 0.88rem;">
+          Articles coming soon.
+        </p>
+      ) : (
+        latestArticles.map((post) => (
+          <a class="mega-menu__article-link" href={blogHref(post)}>
+            {post.data.title}
+          </a>
+        ))
+      )
+    }
+  </div>
+</MegaMenuShell>

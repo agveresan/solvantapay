@@ -1,27 +1,74 @@
-﻿---
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import IndustryIconTile from "../../components/IndustryIconTile.astro";
+import { industriesByRisk } from "../../lib/industries";
+
+const low = industriesByRisk("low");
+const high = industriesByRisk("high");
+let iconIndex = 0;
 ---
 <BaseLayout
   title="Industries | Solvanta Pay"
-  description="High-risk verticals we support with disciplined underwriting and merchant-friendly operations."
+  description="Payment processing for low-risk and high-risk verticals — disciplined underwriting, clear operations, and merchant-friendly support."
 >
+  <section class="hero">
+    <div class="container">
+      <h1 style="font-size: clamp(2rem, 4vw, 2.65rem); margin-bottom: 0.75rem;">Industries</h1>
+      <p class="muted" style="font-size: 1.1rem; max-width: 62ch;">
+        Explore the verticals we work with most often. Each hub explains what issuers care about and how we align your
+        application with underwriting expectations.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+        <a class="btn btn--primary" href="/apply/">Start an application</a>
+        <a class="btn btn--ghost" href="/solutions/">Solutions</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
-    <div class="container prose">
-      <h1>Industries</h1>
-      <p class="muted">
-        Placeholder page — tailor this to the verticals you intentionally support and your underwriting appetite.
-      </p>
-      <h2>Example verticals (edit)</h2>
-      <ul>
-        <li>Subscription and continuity commerce</li>
-        <li>Regulated supplements and wellness</li>
-        <li>Travel and hospitality</li>
-        <li>Digital services and software</li>
-      </ul>
-      <p>
-        <a class="btn btn--primary" href="/apply/">Apply</a>
-      </p>
+    <div class="container">
+      <div class="mega-menu__tier" style="margin-bottom: 2rem;">
+        <h2 class="mega-menu__tier-title" style="font-size: 1.15rem;">Low-risk</h2>
+        <div class="mega-menu__grid">
+          {low.map((ind) => {
+            const idx = iconIndex++;
+            return (
+              <a class="mega-menu__link" href={`/industries/${ind.slug}/`}>
+                <IndustryIconTile variant={idx} />
+                <span class="mega-menu__link-text">{ind.title}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+      <div class="mega-menu__tier">
+        <h2 class="mega-menu__tier-title" style="font-size: 1.15rem;">High-risk</h2>
+        <div class="mega-menu__grid">
+          {high.map((ind) => {
+            const idx = iconIndex++;
+            return (
+              <a class="mega-menu__link" href={`/industries/${ind.slug}/`}>
+                <IndustryIconTile variant={idx} />
+                <span class="mega-menu__link-text">{ind.title}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="card">
+        <h2 style="margin-top: 0;">Not sure where you fit?</h2>
+        <p class="muted">
+          Tell us about your business in the application — we will map your model to the right underwriting conversation.
+        </p>
+        <p style="margin-top: 1rem;">
+          <a class="btn btn--primary" href="/apply/">Apply</a>
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>
-

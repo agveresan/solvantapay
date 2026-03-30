@@ -1,0 +1,36 @@
+---
+type Props = {
+  variant?: number;
+};
+
+const { variant = 0 } = Astro.props;
+const v = ((variant % 3) + 3) % 3;
+---
+<div class="mega-menu__icon-tile">
+  {
+    v === 0 && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="4" y="4" width="7" height="7" rx="1.5" />
+        <rect x="13" y="4" width="7" height="7" rx="1.5" />
+        <rect x="4" y="13" width="7" height="7" rx="1.5" />
+        <rect x="13" y="13" width="7" height="7" rx="1.5" />
+      </svg>
+    )
+  }
+  {
+    v === 1 && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M4 19h16" stroke-linecap="round" />
+        <path d="M7 16V9l5-3 5 3v7" stroke-linejoin="round" />
+        <path d="M7 12h10" />
+      </svg>
+    )
+  }
+  {
+    v === 2 && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" stroke-linejoin="round" />
+      </svg>
+    )
+  }
+</div>
