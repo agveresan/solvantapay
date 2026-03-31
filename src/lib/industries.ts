@@ -531,9 +531,121 @@ export const INDUSTRIES: Industry[] = [
       },
     ],
   },
+  {
+    slug: "peptide",
+    title: "Peptides",
+    risk: "high",
+    description:
+      "Payment processing for peptides and research chemicals: high-risk merchant accounts, domestic and offshore options, and chargeback-aware support.",
+    tagline:
+      "Stable merchant accounts built for peptide and research chemical businesses — not one-size-fits-all low-risk stacks.",
+    painPoints: [
+      "Restricted product categories draw issuer scrutiny and frequent processor shutdowns.",
+      "Subscription and recurring models need underwriting that understands research-use positioning.",
+      "Chargeback and dispute patterns differ sharply from standard retail.",
+    ],
+    valueProps: [
+      {
+        title: "Vertical-aware placement",
+        body: "We map your catalog, compliance story, and fulfillment to banks that work in this space.",
+      },
+      {
+        title: "Domestic and offshore options",
+        body: "Entity structure and risk profile guide the right MID and gateway fit.",
+      },
+      {
+        title: "Operational support",
+        body: "Chargeback monitoring and clear reserve expectations when ratios need attention.",
+      },
+    ],
+  },
+  {
+    slug: "nutraceuticals",
+    title: "Nutraceuticals",
+    risk: "high",
+    description:
+      "Nutraceutical merchant accounts and supplement payment processing for wellness brands — continuity billing, autoship, and high-volume e-commerce.",
+    tagline: "High-risk-friendly merchant accounts built for supplement brands and aggressive growth models.",
+    painPoints: [
+      "Supplements are treated as high-risk; continuity and trial offers increase issuer scrutiny.",
+      "Autoship and refund policies must align with marketing to keep dispute rates explainable.",
+      "Scaling volume quickly can stress reserves and monitoring if underwriting is not aligned.",
+    ],
+    valueProps: [
+      {
+        title: "Continuity expertise",
+        body: "We align trials, rebills, and cancellation paths with what underwriting expects.",
+      },
+      {
+        title: "Volume-ready structures",
+        body: "Capacity conversations matched to your processing history and growth plan.",
+      },
+      {
+        title: "Brand-safe operations",
+        body: "Descriptors and fulfillment clarity that reduce avoidable chargebacks.",
+      },
+    ],
+  },
+  {
+    slug: "adult-content",
+    title: "Adult content",
+    risk: "high",
+    description:
+      "Adult merchant accounts and high-risk payment processing for content platforms, subscriptions, and related services.",
+    tagline: "Stable placement for adult businesses with discreet, operator-focused underwriting support.",
+    painPoints: [
+      "Bank appetite for adult verticals is selective and policy-dependent.",
+      "Subscription and recurring billing need clear descriptors and cancellation paths.",
+      "Prior shutdowns are common; the full story must be documented for a new MID.",
+    ],
+    valueProps: [
+      {
+        title: "Adult-friendly partner fit",
+        body: "We introduce processing relationships aligned with your model and compliance posture.",
+      },
+      {
+        title: "Subscription discipline",
+        body: "Billing flows reviewed for sustainable dispute rates.",
+      },
+      {
+        title: "Discreet, professional process",
+        body: "Clear expectations on documentation and timelines.",
+      },
+    ],
+  },
 ];
 
 const bySlug = new Map(INDUSTRIES.map((i) => [i.slug, i]));
+
+/** Nav mega menu: low-risk row (left to right) */
+export const MEGA_MENU_LOW_SLUGS: readonly string[] = [
+  "ecommerce",
+  "healthcare",
+  "law-firms",
+  "medspa",
+  "bar-restaurant",
+  "retail",
+  "home-services",
+  "accounting-cpa-firms",
+];
+
+/** Nav mega menu: high-risk row (left to right) */
+export const MEGA_MENU_HIGH_SLUGS: readonly string[] = [
+  "peptide",
+  "cbd",
+  "creator-content",
+  "credit-repair",
+  "adult-content",
+  "ai",
+  "saas",
+  "firearms",
+  "nutraceuticals",
+  "fantasy-sports",
+  "travel",
+  "vape",
+  "telemedicine",
+  "online-dating",
+];
 
 export function getIndustry(slug: string): Industry | undefined {
   return bySlug.get(slug);
@@ -541,6 +653,12 @@ export function getIndustry(slug: string): Industry | undefined {
 
 export function industriesByRisk(tier: RiskTier): Industry[] {
   return INDUSTRIES.filter((i) => i.risk === tier);
+}
+
+/** Industries in mega menu display order for a risk tier */
+export function industriesForMegaMenu(tier: RiskTier): Industry[] {
+  const order = tier === "low" ? MEGA_MENU_LOW_SLUGS : MEGA_MENU_HIGH_SLUGS;
+  return order.map((s) => bySlug.get(s)).filter((i): i is Industry => i !== undefined);
 }
 
 /** Value for ?industry= on /apply/ — URL-encoded title */

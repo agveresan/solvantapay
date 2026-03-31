@@ -4,3 +4,29 @@
   AddType application/javascript .js
   AddType application/json .json
 </IfModule>
+
+# Legacy vertical URLs → /industries/{slug}/ (301)
+<IfModule mod_alias.c>
+  RedirectMatch 301 ^/accounting-cpa-firm-payment-processing/?$ /industries/accounting-cpa-firms/
+  RedirectMatch 301 ^/adult-content-payment-processing/?$ /industries/adult-content/
+  RedirectMatch 301 ^/ai-payment-processing/?$ /industries/ai/
+  RedirectMatch 301 ^/bar-restaurant-payment-processing/?$ /industries/bar-restaurant/
+  RedirectMatch 301 ^/cbd-payment-processing/?$ /industries/cbd/
+  RedirectMatch 301 ^/content-creator-payment-processing/?$ /industries/creator-content/
+  RedirectMatch 301 ^/credit-repair-payment-processing/?$ /industries/credit-repair/
+  RedirectMatch 301 ^/ecommerce-payment-processing/?$ /industries/ecommerce/
+  RedirectMatch 301 ^/fantasy-sports-payment-processing/?$ /industries/fantasy-sports/
+  RedirectMatch 301 ^/firearms-payment-processing/?$ /industries/firearms/
+  RedirectMatch 301 ^/healthcare-payment-processing/?$ /industries/healthcare/
+  RedirectMatch 301 ^/home-services-payment-processing/?$ /industries/home-services/
+  RedirectMatch 301 ^/law-firm-payment-processing/?$ /industries/law-firms/
+  RedirectMatch 301 ^/med-spa-payment-processing/?$ /industries/medspa/
+  RedirectMatch 301 ^/nutraceuticals-payment-processing/?$ /industries/nutraceuticals/
+  RedirectMatch 301 ^/online-dating-payment-processing/?$ /industries/online-dating/
+  RedirectMatch 301 ^/peptide-payment-processing/?$ /industries/peptide/
+  RedirectMatch 301 ^/retail-payment-processing/?$ /industries/retail/
+  RedirectMatch 301 ^/saas-payment-processing/?$ /industries/saas/
+  RedirectMatch 301 ^/telemedicine-payment-processing/?$ /industries/telemedicine/
+  RedirectMatch 301 ^/travel-payment-processing/?$ /industries/travel/
+  RedirectMatch 301 ^/vape-payment-processing/?$ /industries/vape/
+</IfModule>

@@ -1,0 +1,421 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import heroVisual from "../../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../../lib/site";
+import { applyIndustryQueryValue } from "../../../lib/industries";
+import type { Industry } from "../../../lib/industries";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  industry: Industry;
+  relatedPosts?: CollectionEntry<"blog">[];
+};
+const { industry, relatedPosts = [] } = Astro.props;
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL(`/industries/${industry.slug}/`, site).href;
+const applyHref = `/apply/?industry=${applyIndustryQueryValue(industry.title)}`;
+
+const pageTitle = "SaaS payment processing | Solvanta Pay";
+const pageDescription =
+  "SaaS merchant account and subscription payment processing for software companies. Recurring billing, usage-based pricing, high-volume SaaS payment gateway — stable processing when you scale past starter platforms.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    { "@type": "ListItem", position: 2, name: "Industries", item: `${site}/industries/` },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: industry.title,
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can SaaS businesses get approved for payment processing?",
+    a: "Yes. We work with a wide range of SaaS platforms and subscription-based businesses — subject to underwriting, billing model documentation, and bank partner appetite.",
+  },
+  {
+    q: "Do you support subscription and usage-based billing?",
+    a: "Yes. Recurring, tiered, and usage-based pricing models are core — we help align descriptors, trials, and cancellation paths with what underwriters expect.",
+  },
+  {
+    q: "What if I have been shut down before?",
+    a: "We can often still help. Many SaaS businesses come to us after being dropped by traditional processors — we map your MRR, dispute history, and product flow to the right underwriting conversation.",
+  },
+  {
+    q: "Do you support international customers?",
+    a: "Yes. We provide paths for global SaaS platforms where your entity, stack, and bank partners support cross-border acceptance — final setup depends on underwriting.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many SaaS businesses see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">SaaS, platforms & recurring revenue</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Scaling fast? Don&apos;t let your payment processor slow you down.
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          SaaS payment processing built to scale with your platform
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running a SaaS or subscription-based business? We provide reliable, scalable payment processing designed for
+          SaaS companies, platforms, and recurring revenue models.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Built for SaaS companies that have outgrown generic processors — stable accounts, subscription-aware
+          underwriting, and room to grow without surprise shutdowns at volume.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for SaaS processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for SaaS and subscription businesses</li>
+          <li>Recurring and usage-based billing support</li>
+          <li>High-volume scaling solutions</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">Scale without shutdowns</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Growth and MRR — underwriting that understands subscription velocity</li>
+            <li>Billing complexity — tiers, usage, upgrades mapped clearly for risk</li>
+            <li>Stability — multi-MID and backup paths where partners allow</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            References to third-party platforms are for positioning only — not endorsements. Approvals and terms depend
+            on underwriting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why SaaS businesses outgrow their payment processor</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Most SaaS companies start with simple payment solutions — but as they grow, limitations and risks begin to
+        surface.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns during scaling</h3>
+          <p class="muted">
+            Rapid growth or evolving use cases can lead to sudden account termination with generic processors.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription billing complexity</h3>
+          <p class="muted">
+            Recurring billing, upgrades, downgrades, and usage-based pricing can be difficult to manage — and to explain to
+            risk teams.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High chargeback risk</h3>
+          <p class="muted">
+            Subscription disputes and billing misunderstandings can increase chargebacks.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Limited flexibility</h3>
+          <p class="muted">
+            Many processors are not built for complex SaaS billing models.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International and high-volume challenges</h3>
+          <p class="muted">
+            Global users and scaling volume can trigger additional scrutiny.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for SaaS and subscription platforms</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We understand how SaaS businesses operate — and we build payment systems designed for scalability, flexibility,
+        and long-term stability.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable merchant accounts</h3>
+          <p class="muted">
+            Process higher volumes with accounts structured for growth — within approved limits.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and usage-based billing support</h3>
+          <p class="muted">
+            Recurring payments, API billing, and flexible pricing models.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term processing</h3>
+          <p class="muted">
+            Avoid unnecessary disruptions with underwriting-aligned placement.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible risk structuring</h3>
+          <p class="muted">
+            We position your business clearly for underwriting approval.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback mitigation tools</h3>
+          <p class="muted">
+            Monitoring, alerts, and prevention strategies for subscription disputes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Multi-MID and backup processing</h3>
+          <p class="muted">
+            Uptime and redundancy as your platform scales — where underwriting allows.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for SaaS businesses like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>SaaS platforms</li>
+        <li>Subscription-based software companies</li>
+        <li>API-based services</li>
+        <li>B2B and B2C SaaS tools</li>
+        <li>AI and automation platforms</li>
+        <li>Membership and recurring revenue platforms</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you bill monthly, annually, or based on usage — we can support your model.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — SaaS-aware underwriting — then go live.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your SaaS platform, billing model, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with the best solution for your business model.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a scalable payment system built for your platform.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by growing SaaS companies</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials as soon as possible.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We scaled our SaaS without worrying about payment disruptions.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;Flexible billing and reliable processing for our platform.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process SaaS payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing</h3>
+          <p class="muted">MRR, renewals, and plan changes.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Usage-based billing support</h3>
+          <p class="muted">Metering and overage aligned with your product.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">SaaS platform integrations</h3>
+          <p class="muted">Gateway and stack alignment for your checkout.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a profile problem.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Growth spurts and enterprise deals — with underwriting in view.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International payment support</h3>
+          <p class="muted">Global customers where your entity and partners allow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why SaaS companies choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">SaaS and subscription models</h3>
+          <p class="muted">We speak MRR, churn, trials, and tiers.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Complex billing structures</h3>
+          <p class="muted">Documented for underwriting — not a black box.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable, reliable processing</h3>
+          <p class="muted">Built for growth curves, not hobby volume.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Long-term growth-focused solutions</h3>
+          <p class="muted">Partnership posture as you add SKUs and markets.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Your payment processor should grow with your platform — not limit it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop worrying about payments. Start scaling.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a SaaS payment solution designed for growth, flexibility, and stability.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">SaaS payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  {
+    relatedPosts.length > 0 && (
+      <section class="section section--tight">
+        <div class="container">
+          <h2 style="margin-bottom: 1rem;">Related reading</h2>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;">
+            {relatedPosts.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.id.replace(/\.md$/, "")}/`}
+                  style="font-weight: 600; text-decoration: none;"
+                >
+                  {post.data.title}
+                </a>
+                <p class="muted" style="margin: 0.25rem 0 0; font-size: 0.95rem;">
+                  {post.data.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,419 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import heroVisual from "../../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../../lib/site";
+import { applyIndustryQueryValue } from "../../../lib/industries";
+import type { Industry } from "../../../lib/industries";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  industry: Industry;
+  relatedPosts?: CollectionEntry<"blog">[];
+};
+const { industry, relatedPosts = [] } = Astro.props;
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL(`/industries/${industry.slug}/`, site).href;
+const applyHref = `/apply/?industry=${applyIndustryQueryValue(industry.title)}`;
+
+const pageTitle = "Healthcare payment processing | Solvanta Pay";
+const pageDescription =
+  "Medical merchant account and healthcare payment solutions for clinics and practices. Secure payment processing for medical offices, dental, PT — in-person, online, and payment plans.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    { "@type": "ListItem", position: 2, name: "Industries", item: `${site}/industries/` },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: industry.title,
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can healthcare providers get approved for payment processing?",
+    a: "Yes. We work with a wide range of healthcare providers and medical practices — subject to underwriting, licensing, and bank partner appetite.",
+  },
+  {
+    q: "Do you support recurring billing and payment plans?",
+    a: "Yes. Memberships, care plans, and installment payments are common — we help align billing cadence and descriptors with what underwriters expect.",
+  },
+  {
+    q: "Is your system secure for patient payments?",
+    a: "We focus on secure, compliance-aware payment paths aligned with card brand and processor requirements. Your BAAs, EHR, and HIPAA obligations are separate from the merchant account — we can discuss how pieces fit together during review.",
+  },
+  {
+    q: "Can I accept payments online and in-person?",
+    a: "Yes. We support multiple payment methods and channels — card-present and card-not-present — where your gateway and bank stack allow.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many healthcare providers see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Practices, clinics & medical organizations</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Secure, reliable payment solutions for modern healthcare providers
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Healthcare payment processing you can rely on
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running a healthcare practice or medical business? We provide secure, reliable payment processing built for
+          healthcare providers, clinics, and medical organizations.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Make it easier for patients to pay — anytime, anywhere — with flexible in-person, online, and mobile options.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for healthcare processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for healthcare and medical providers</li>
+          <li>Secure, compliance-aware processing</li>
+          <li>In-person and online payment support</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Collections — modern checkout and plans that reduce friction for patients</li>
+            <li>Security posture — processor-aligned practices for cardholder data</li>
+            <li>Long-term stability — accounts structured for regulated, repeat-care environments</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            We are a payments partner, not your HIPAA counsel. Final compliance responsibilities depend on your entity,
+            vendors, and agreements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why healthcare businesses face payment challenges</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Healthcare providers operate in a highly regulated environment — making payment processing more complex than
+        most industries.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Compliance and data security concerns</h3>
+          <p class="muted">
+            Handling sensitive patient information requires secure, thoughtful payment systems.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Billing complexity</h3>
+          <p class="muted">
+            Between insurance, co-pays, and private pay, healthcare billing can be difficult to manage.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Outdated payment systems</h3>
+          <p class="muted">
+            Many practices rely on legacy systems that slow down operations and collections.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Patient payment delays</h3>
+          <p class="muted">
+            Manual billing and invoicing can lead to delayed or missed payments.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Limited flexibility</h3>
+          <p class="muted">
+            Some processors do not support modern payment methods or integrations with practice systems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for healthcare providers</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We provide payment solutions designed for the unique needs of healthcare organizations — combining security,
+        flexibility, and reliability.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure, compliance-aware processing</h3>
+          <p class="muted">
+            Payment systems aligned with healthcare data and security expectations — within processor and gateway rules.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible payment options</h3>
+          <p class="muted">
+            Accept payments in-person, online, or via mobile for greater patient convenience.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing support</h3>
+          <p class="muted">
+            Ongoing care plans, memberships, and treatment programs.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Improved patient collections</h3>
+          <p class="muted">
+            Streamline payments with modern checkout, invoicing, and payment tools.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Reliable, long-term processing</h3>
+          <p class="muted">
+            Stable payment solutions designed for healthcare operations.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable infrastructure</h3>
+          <p class="muted">
+            Support your practice as it grows — from small clinics to larger organizations.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for healthcare providers like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Medical practices and clinics</li>
+        <li>Dental offices</li>
+        <li>Chiropractic and wellness centers</li>
+        <li>Physical therapy providers</li>
+        <li>Specialty healthcare services</li>
+        <li>Private-pay and hybrid practices</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you bill in-office, online, or through a hybrid model — we can support your workflow.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — we align underwriting with how your practice collects.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your practice, services, and payment needs.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with the best solution for your setup.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a reliable payment system built for your practice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by healthcare providers</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials for strong trust signals.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We streamlined our patient payments and improved collections.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;Reliable processing that works with our practice.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process healthcare payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment processing</h3>
+          <p class="muted">Card acceptance aligned with processor security expectations.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">In-person, online, and mobile payments</h3>
+          <p class="muted">Meet patients where they pay.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing and payment plans</h3>
+          <p class="muted">Predictable cadence for care plans.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility on disputes before they become a profile issue.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume processing capability</h3>
+          <p class="muted">Busy practices and multi-location groups.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Integration-friendly solutions</h3>
+          <p class="muted">Work with common practice tools where stack allows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why healthcare providers choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Healthcare payment needs</h3>
+          <p class="muted">We speak collections, co-pays, and private-pay flows.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Security and compliance awareness</h3>
+          <p class="muted">We prioritize processor-aligned security conversations.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible, modern payment solutions</h3>
+          <p class="muted">Channels and methods that match how patients expect to pay.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Long-term, reliable systems</h3>
+          <p class="muted">Processing meant to support your practice for years.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Your payment processor should support your practice — not slow it down.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Simplify payments. Focus on patient care.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a healthcare-friendly payment solution designed for security, reliability, and growth.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Healthcare payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  {
+    relatedPosts.length > 0 && (
+      <section class="section section--tight">
+        <div class="container">
+          <h2 style="margin-bottom: 1rem;">Related reading</h2>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;">
+            {relatedPosts.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.id.replace(/\.md$/, "")}/`}
+                  style="font-weight: 600; text-decoration: none;"
+                >
+                  {post.data.title}
+                </a>
+                <p class="muted" style="margin: 0.25rem 0 0; font-size: 0.95rem;">
+                  {post.data.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
