@@ -1,0 +1,385 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/vape-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Vape payment processing")}`;
+
+const pageTitle = "Vape payment processing | Solvanta Pay";
+const pageDescription =
+  "Vape merchant account and e-cigarette payment processing for online vape stores and wholesalers. Age-restricted compliant processing, high-risk vape payment gateway, Shopify and WooCommerce support.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Vape payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can vape businesses get approved for payment processing?",
+    a: "Yes. Many mainstream providers restrict vape and nicotine products, but we work with banks that support these categories — subject to underwriting, product mix, and bank partner appetite.",
+  },
+  {
+    q: "Do you support age-restricted compliance requirements?",
+    a: "Yes. We help align your processing setup with age verification expectations and clear product descriptors — final requirements depend on your stack, jurisdiction, and processor rules.",
+  },
+  {
+    q: "Can I sell vape products online?",
+    a: "Often yes, depending on compliance, licensing where required, and how your site enforces age gating and shipping rules. We guide you through what underwriters need to see.",
+  },
+  {
+    q: "What if I have been shut down before?",
+    a: "That is common. Many vape businesses come to us after being dropped by traditional processors. We map your channels, chargeback history, and catalog to the right underwriting conversation.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many businesses see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Vape stores, e-liquid & hardware</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Built for age-restricted vape businesses
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Vape payment processing that keeps your store live
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Selling vape products, e-cigarettes, or accessories? We provide stable, high-risk-friendly merchant accounts
+          built for vape and nicotine product businesses.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Recently shut down? We can help you get back online fast — with underwriting that understands restricted
+          categories and e-commerce velocity.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for vape processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for vape and e-cigarette businesses</li>
+          <li>Age-restricted compliant processing</li>
+          <li>E-commerce and high-volume support</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Stable processing — fewer surprise shutdowns when the model is documented</li>
+            <li>Chargeback and fraud monitoring tuned for card-not-present vape sales</li>
+            <li>Scaling without losing your processor — limits aligned with growth</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Compliance varies by jurisdiction and product type. Content on this site is informational and not legal
+            advice; approvals depend on underwriting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why vape businesses struggle to process payments</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Vape and e-cigarette businesses face strict regulations and high-risk classification — making reliable payment
+        processing difficult.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Restricted by most processors</h3>
+          <p class="muted">
+            Many platforms like Stripe, PayPal, and Square prohibit vape and nicotine-related products.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Age verification requirements</h3>
+          <p class="muted">
+            Strict age-restriction rules create additional compliance challenges at checkout and fulfillment.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns without warning</h3>
+          <p class="muted">
+            Even approved accounts may be terminated due to policy changes or increased scrutiny.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High chargeback and fraud risk</h3>
+          <p class="muted">
+            E-commerce vape stores often face disputes, fraud, and delivery-related issues.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Limited scaling options</h3>
+          <p class="muted">
+            As your store grows, processors may impose limits, reserves, or shutdowns.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for vape and e-cigarette businesses</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We understand the regulatory and operational challenges of vape businesses — and we build processing solutions
+        designed for long-term stability.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk merchant account approval</h3>
+          <p class="muted">
+            We work with banks that accept vape, e-cigarette, and nicotine-related products — where underwriting allows.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Compliance-aware processing</h3>
+          <p class="muted">
+            We help ensure your setup aligns with age verification and product guidelines for your sales channels.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term processing</h3>
+          <p class="muted">
+            Avoid sudden shutdowns with accounts built for your industry and catalog.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">E-commerce integration support</h3>
+          <p class="muted">
+            Integration paths for Shopify, WooCommerce, and custom checkouts — aligned with bank and gateway rules.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback and fraud mitigation tools</h3>
+          <p class="muted">
+            Protect your business with monitoring and prevention systems.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable infrastructure</h3>
+          <p class="muted">
+            Grow your vape business without losing your processor — within approved limits.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for vape businesses like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Vape and e-cigarette brands</li>
+        <li>Online vape stores</li>
+        <li>Vape distributors and wholesalers</li>
+        <li>E-liquid and juice brands</li>
+        <li>Disposable vape sellers</li>
+        <li>Accessories and hardware retailers</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you run a high-volume e-commerce store or a wholesale operation — we can support your setup.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — vape-aware underwriting — then go live.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your vape products, sales channels, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with vape-friendly bank and gateway appetite for your profile.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a stable merchant account built for your business.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by high-risk e-commerce brands</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials when available — stability and uptime stories convert strongly here.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We finally found a processor that supports vape products long-term.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;No more shutdowns or payment interruptions.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process vape payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Age-restricted compliant payment solutions</h3>
+          <p class="muted">Processing aligned with restricted-category expectations.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">E-commerce and POS integration</h3>
+          <p class="muted">Online and in-person paths where your bank stack supports them.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a profile problem.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Plan for spikes and catalog growth with underwriting.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International payment support</h3>
+          <p class="muted">Cross-border sales where entity and rules allow.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment gateways</h3>
+          <p class="muted">Checkout experiences that match your storefront.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why vape businesses choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk industries like vape</h3>
+          <p class="muted">We specialize in verticals mainstream processors avoid.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Compliance and regulatory challenges</h3>
+          <p class="muted">We know what underwriters ask for in restricted categories.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Bank relationships others do not have</h3>
+          <p class="muted">Partnerships for vape, e-cigarette, and nicotine-adjacent sales.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable, long-term systems</h3>
+          <p class="muted">Processing built for growth — not a disposable MID.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Most processors avoid vape businesses. We&apos;re built for it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop getting shut down. Keep your store live.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a vape-friendly merchant account designed for compliance, stability, and growth.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Vape payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

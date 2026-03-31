@@ -15,8 +15,31 @@ function blogHref(post: CollectionEntry<"blog">) {
   return `/blog/${post.id.replace(/\.md$/, "")}/`;
 }
 
-const low = industriesByRisk("low");
-const high = industriesByRisk("high");
+const low = industriesByRisk("low").filter(
+  (ind) =>
+    ind.slug !== "ecommerce" &&
+    ind.slug !== "healthcare" &&
+    ind.slug !== "law-firms" &&
+    ind.slug !== "medspa" &&
+    ind.slug !== "bar-restaurant" &&
+    ind.slug !== "retail" &&
+    ind.slug !== "home-services" &&
+    ind.slug !== "accounting-cpa-firms",
+);
+const high = industriesByRisk("high").filter(
+  (ind) =>
+    ind.slug !== "cbd" &&
+    ind.slug !== "creator-content" &&
+    ind.slug !== "credit-repair" &&
+    ind.slug !== "ai" &&
+    ind.slug !== "firearms" &&
+    ind.slug !== "fantasy-sports" &&
+    ind.slug !== "travel" &&
+    ind.slug !== "vape" &&
+    ind.slug !== "telemedicine" &&
+    ind.slug !== "online-dating" &&
+    ind.slug !== "saas",
+);
 let iconIndex = 0;
 ---
 <MegaMenuShell>
@@ -24,6 +47,38 @@ let iconIndex = 0;
     <div class="mega-menu__tier">
       <p class="mega-menu__tier-title">Low-risk</p>
       <div class="mega-menu__grid">
+        <a class="mega-menu__link" href="/ecommerce-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Ecommerce</span>
+        </a>
+        <a class="mega-menu__link" href="/healthcare-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Healthcare</span>
+        </a>
+        <a class="mega-menu__link" href="/law-firm-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Law firms</span>
+        </a>
+        <a class="mega-menu__link" href="/med-spa-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Med spa</span>
+        </a>
+        <a class="mega-menu__link" href="/bar-restaurant-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Bar & restaurant</span>
+        </a>
+        <a class="mega-menu__link" href="/retail-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Retail</span>
+        </a>
+        <a class="mega-menu__link" href="/home-services-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Home services</span>
+        </a>
+        <a class="mega-menu__link" href="/accounting-cpa-firm-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Accounting &amp; CPA</span>
+        </a>
         {low.map((ind) => {
           const idx = iconIndex++;
           return (
@@ -40,7 +95,59 @@ let iconIndex = 0;
       <div class="mega-menu__grid">
         <a class="mega-menu__link" href="/peptide-payment-processing/">
           <IndustryIconTile variant={iconIndex++} />
-          <span class="mega-menu__link-text">Peptide payment processing</span>
+          <span class="mega-menu__link-text">Peptides</span>
+        </a>
+        <a class="mega-menu__link" href="/cbd-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">CBD</span>
+        </a>
+        <a class="mega-menu__link" href="/content-creator-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Creators</span>
+        </a>
+        <a class="mega-menu__link" href="/credit-repair-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Credit repair</span>
+        </a>
+        <a class="mega-menu__link" href="/adult-content-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Adult content</span>
+        </a>
+        <a class="mega-menu__link" href="/ai-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">AI</span>
+        </a>
+        <a class="mega-menu__link" href="/saas-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">SaaS</span>
+        </a>
+        <a class="mega-menu__link" href="/firearms-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Firearms</span>
+        </a>
+        <a class="mega-menu__link" href="/nutraceuticals-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Nutraceuticals</span>
+        </a>
+        <a class="mega-menu__link" href="/fantasy-sports-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Fantasy sports</span>
+        </a>
+        <a class="mega-menu__link" href="/travel-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Travel</span>
+        </a>
+        <a class="mega-menu__link" href="/vape-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Vape</span>
+        </a>
+        <a class="mega-menu__link" href="/telemedicine-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Telemedicine</span>
+        </a>
+        <a class="mega-menu__link" href="/online-dating-payment-processing/">
+          <IndustryIconTile variant={iconIndex++} />
+          <span class="mega-menu__link-text">Online dating</span>
         </a>
         {high.map((ind) => {
           const idx = iconIndex++;

@@ -1,0 +1,383 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/ecommerce-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("eCommerce payment processing")}`;
+
+const pageTitle = "eCommerce payment processing | Solvanta Pay";
+const pageDescription =
+  "eCommerce merchant account and payment processing for online stores. Shopify and WooCommerce support, high-volume gateway, subscription billing — scalable processing for DTC and high-ticket brands.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "eCommerce payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can I get approved for eCommerce payment processing?",
+    a: "Yes. We work with a wide range of eCommerce businesses — from startups to high-volume brands — subject to underwriting and bank partner appetite.",
+  },
+  {
+    q: "Do you support Shopify and WooCommerce?",
+    a: "Yes. We integrate with major eCommerce platforms and custom checkouts — aligned with your gateway and bank requirements.",
+  },
+  {
+    q: "What if my store has been flagged or shut down before?",
+    a: "We can often still help. Many eCommerce brands come to us after being dropped by other processors — we review your model, dispute history, and product mix.",
+  },
+  {
+    q: "Do you support subscription-based eCommerce?",
+    a: "Yes. Autoship, memberships, and recurring billing models are supported — with clear renewal and cancellation paths.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many eCommerce businesses see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Online stores, DTC & high-volume retail</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Processing $20K–$500K+/month? We&apos;re built for you.
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          eCommerce payment processing built to scale with your store
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running an online store? We provide reliable, scalable payment processing for eCommerce brands — whether
+          you&apos;re just starting or processing high monthly volume.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Outgrowing Stripe or Shopify Payments? We can help — with merchant accounts structured for growth, not
+          arbitrary caps.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for eCommerce processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for eCommerce brands and online stores</li>
+          <li>High-volume and high-ticket support</li>
+          <li>Subscription and one-time billing</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Standard and high-risk eCommerce — we match bank appetite to your catalog</li>
+            <li>Cash flow — clearer reserve and hold expectations as you scale</li>
+            <li>Chargebacks — monitoring and prevention aligned with how you fulfill</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Approvals and terms depend on underwriting. Content on this site is informational and not a guarantee of
+            rates or limits.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why eCommerce businesses outgrow their payment processor</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Most eCommerce businesses start with a basic payment processor — but as they grow, problems start to appear.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns during scaling</h3>
+          <p class="muted">
+            Many stores get flagged or shut down once revenue increases or marketing becomes aggressive.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High chargeback rates</h3>
+          <p class="muted">
+            Returns, delivery issues, and customer disputes can impact your account stability.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Payment holds and reserves</h3>
+          <p class="muted">
+            Processors may hold funds or impose rolling reserves — hurting your cash flow.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Platform limitations</h3>
+          <p class="muted">
+            Not all processors support high-ticket products, subscriptions, or certain product categories.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Lack of support</h3>
+          <p class="muted">
+            When issues arise, most providers offer limited support — leaving your business at risk.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for growing eCommerce brands</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We provide payment solutions designed to grow with your store — not hold it back.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable merchant accounts</h3>
+          <p class="muted">
+            Process higher volumes without constant risk of shutdowns — within approved limits.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-ticket and high-volume support</h3>
+          <p class="muted">
+            Built for stores doing serious revenue — not just small transactions.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing</h3>
+          <p class="muted">
+            Memberships, autoship programs, and repeat customers.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term processing</h3>
+          <p class="muted">
+            Avoid disruptions with accounts structured for growth.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback mitigation tools</h3>
+          <p class="muted">
+            Monitoring, alerts, and prevention strategies.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible processing options</h3>
+          <p class="muted">
+            Domestic and offshore solutions available as your business evolves — subject to underwriting.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for eCommerce businesses like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Shopify and WooCommerce stores</li>
+        <li>High-ticket eCommerce brands</li>
+        <li>Dropshipping and fulfillment businesses</li>
+        <li>Subscription-based eCommerce (autoship)</li>
+        <li>Direct-to-consumer (DTC) brands</li>
+        <li>Multi-product online stores</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you&apos;re just launching or scaling to high monthly revenue — we can support your growth.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — underwriting aligned to how you sell — then go live.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your store, products, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with the best solution for your business model.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a reliable merchant account built for your store.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by growing eCommerce brands</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials as soon as possible.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We scaled past six figures monthly without worrying about shutdowns.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;Finally found a processor that grows with our business.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process eCommerce payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">E-commerce platform integrations</h3>
+          <p class="muted">Shopify, WooCommerce, and other major stacks.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing support</h3>
+          <p class="muted">Autoship, memberships, and renewals.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a profile problem.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Peaks, campaigns, and catalog expansion.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International payment support</h3>
+          <p class="muted">Cross-border customers where your entity allows.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment gateways</h3>
+          <p class="muted">Checkout that matches your brand and stack.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why eCommerce brands choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Standard and high-risk eCommerce</h3>
+          <p class="muted">We support a wide funnel — not only restricted categories.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scaling challenges</h3>
+          <p class="muted">Volume, tickets, and dispute bands — we document the full picture.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible banking relationships</h3>
+          <p class="muted">Domestic and offshore paths as your model evolves.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Long-term, growth-focused solutions</h3>
+          <p class="muted">Processing meant to last — not a starter MID you outgrow in a quarter.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Most processors work for beginners. We&apos;re built for brands that want to scale.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop outgrowing your payment processor</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a payment solution designed to scale with your eCommerce business.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">eCommerce payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

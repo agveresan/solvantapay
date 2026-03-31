@@ -1,0 +1,386 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/online-dating-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Online dating payment processing")}`;
+
+const pageTitle = "Online dating payment processing | Solvanta Pay";
+const pageDescription =
+  "Dating app payment processing and dating merchant accounts for subscription platforms. Recurring billing, chargeback support, high-risk dating payment gateway for social and matchmaking apps.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Online dating payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can online dating platforms get approved for payment processing?",
+    a: "Yes. Dating and social-discovery categories are high-risk for many banks, but we work with partners that support dating platforms — subject to underwriting, content policies, and bank appetite.",
+  },
+  {
+    q: "Do you support subscription billing?",
+    a: "Yes. Recurring memberships, premium tiers, and ongoing access models are core to how we structure accounts — with clear descriptors, renewal notices, and cancellation paths.",
+  },
+  {
+    q: "What if I have been shut down before?",
+    a: "That is common. Many dating platforms come to us after being dropped by traditional processors. We map your billing model, chargeback history, and moderation posture to the right underwriting conversation.",
+  },
+  {
+    q: "Do you support mobile apps and web platforms?",
+    a: "Yes. We integrate with common mobile and web payment flows — aligned with your gateway and bank requirements.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many platforms see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Dating apps, matchmaking & social discovery</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Running a subscription-based dating app? We&apos;re built for it.
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Online dating payment processing that keeps your platform live
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running a dating app or matchmaking platform? We provide stable, high-risk-friendly payment solutions built for
+          online dating, subscription platforms, and social apps.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Keep your platform live while you scale your user base — with underwriting that understands recurring revenue,
+          disputes, and content-moderation expectations.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for dating processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for dating and social platforms</li>
+          <li>Subscription and recurring billing support</li>
+          <li>High-risk-friendly solutions</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Subscription and recurring revenue — billing structured for renewals and premium tiers</li>
+            <li>Chargeback-aware — monitoring aligned with subscription disputes and user behavior</li>
+            <li>Stability at scale — multi-MID and backup paths where underwriting allows</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Content and moderation practices affect underwriting. Content on this site is informational; approvals depend
+            on bank partner rules and your documented policies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why online dating platforms struggle to process payments</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Dating platforms sit in a high-risk category due to subscription models, user behavior, and content moderation —
+        which makes payment processing difficult.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High chargeback rates</h3>
+          <p class="muted">
+            Users often dispute subscription charges or renewals, increasing risk exposure.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription billing flags</h3>
+          <p class="muted">
+            Recurring billing can trigger risk alerts if not structured with clear terms and notices.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Content and moderation concerns</h3>
+          <p class="muted">
+            User-generated content and interactions can raise compliance concerns for processors.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns without warning</h3>
+          <p class="muted">
+            Platforms like Stripe and PayPal may terminate accounts due to perceived risk.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scaling issues</h3>
+          <p class="muted">
+            As your platform grows, processors may impose limits, reserves, or shutdowns.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for online dating platforms</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We understand how dating platforms operate — and we build processing systems designed for long-term stability and
+        growth.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk merchant account approval</h3>
+          <p class="muted">
+            We work with banks that support dating platforms and social apps — where underwriting allows.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing support</h3>
+          <p class="muted">
+            Memberships, premium features, and ongoing access models.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term processing</h3>
+          <p class="muted">
+            Avoid shutdowns with accounts built for your business model.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback mitigation tools</h3>
+          <p class="muted">
+            Monitoring, alerts, and prevention strategies for subscription disputes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible setup options</h3>
+          <p class="muted">
+            Domestic and offshore solutions based on your platform and scale — subject to underwriting.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Multi-MID and backup processing</h3>
+          <p class="muted">
+            Uptime and redundancy as your user base grows — where partners allow.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for dating platforms like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Online dating apps</li>
+        <li>Subscription-based dating platforms</li>
+        <li>Matchmaking services</li>
+        <li>Niche dating communities</li>
+        <li>Social discovery platforms</li>
+        <li>Mobile and web-based dating services</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you run a mobile app, website, or subscription platform — we integrate with common stacks so operations
+        stay yours while we align the merchant account.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — dating-aware underwriting — then go live.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your platform, billing model, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with bank appetite for your risk profile.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a stable merchant account built for your platform.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by high-growth social platforms</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials for maximum impact.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We finally found a processor that supports our subscription model.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;No more shutdowns or payment disruptions.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process dating platform payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing support</h3>
+          <p class="muted">Renewals, trials, and premium tiers.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Mobile and web payment integrations</h3>
+          <p class="muted">In-app and browser checkout paths.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a profile problem.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Plan for viral growth with the right limits.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International payment support</h3>
+          <p class="muted">Global users where your entity and stack support it.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment gateways</h3>
+          <p class="muted">Tokenization and PCI-aligned flows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why dating platforms choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk subscription-based businesses</h3>
+          <p class="muted">We specialize in recurring models generic processors mishandle.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Dating platform monetization</h3>
+          <p class="muted">We understand subscriptions, boosts, and hybrid revenue.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Bank relationships others do not have</h3>
+          <p class="muted">Partnerships for dating and social-discovery categories.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable, long-term systems</h3>
+          <p class="muted">Processing built for growth — not a disposable MID.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Most processors don&apos;t understand dating platforms. We do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop getting shut down. Keep your platform growing.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a dating-friendly merchant account designed for stability, scalability, and recurring revenue.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Online dating payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

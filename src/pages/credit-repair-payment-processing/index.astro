@@ -1,0 +1,384 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/credit-repair-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Credit repair payment processing")}`;
+
+const pageTitle = "Credit repair payment processing | Solvanta Pay";
+const pageDescription =
+  "Credit repair merchant accounts and CROA-aware payment processing. High-risk credit repair processing, recurring billing, chargeback monitoring — compliant placement for credit repair organizations.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Credit repair payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can credit repair businesses get approved for payment processing?",
+    a: "Yes. Credit repair is high-risk, but we work with banks that specialize in credit repair and financial services. Final approval depends on underwriting, documentation, and bank partner appetite.",
+  },
+  {
+    q: "Do you support CROA-compliant billing?",
+    a: "Yes. We help you think through billing models that align with compliance expectations — for example pay-after-service and other structures that match how you deliver work. Exact setup depends on underwriting.",
+  },
+  {
+    q: "What if I've been declined or shut down before?",
+    a: "That is common. Many of our clients come to us after being rejected or dropped by traditional processors. We map your model to the right underwriting conversation when documentation supports it.",
+  },
+  {
+    q: "Do you support recurring billing?",
+    a: "Yes. Monthly billing and subscription models are supported — with clear descriptors and cancellation paths that match issuer expectations.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many businesses see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Credit repair & financial services</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          CROA-aware payment solutions
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Credit repair payment processing that gets you approved
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Struggling to find a reliable payment processor for your credit repair business? We provide compliant,
+          high-risk merchant accounts built specifically for credit repair organizations.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for credit repair processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for credit repair and financial services</li>
+          <li>Fully compliant processing solutions</li>
+          <li>Recurring billing and subscription support</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Underwriting that understands credit services and billing models</li>
+            <li>Support for recurring plans and dispute-aware operations</li>
+            <li>Domestic and offshore options when your profile supports them</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Content on this site is informational and not legal advice. Underwriting determines final approval and
+            pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why credit repair businesses struggle to process payments</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Credit repair is one of the most restricted industries in payment processing — and most providers simply will
+        not take the risk.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Declined by most processors</h3>
+          <p class="muted">
+            Traditional providers like Stripe, PayPal, and Square often reject credit repair businesses outright.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Compliance risks (CROA regulations)</h3>
+          <p class="muted">
+            Strict laws around billing practices — including upfront fee rules — make underwriting more complex.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High chargeback rates</h3>
+          <p class="muted">
+            Clients disputing results or timelines can drive elevated chargebacks and issuer scrutiny.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns</h3>
+          <p class="muted">
+            Even approved accounts are often terminated once volume or disputes increase.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Cash flow disruptions</h3>
+          <p class="muted">
+            Reserves, holds, and payout delays can cripple day-to-day operations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for credit repair organizations</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We understand the regulatory and risk challenges of credit repair — and we build processing solutions around
+        them.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk merchant account approval</h3>
+          <p class="muted">
+            We work with banks experienced in credit repair and financial services.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Compliance-aware processing</h3>
+          <p class="muted">
+            We structure conversations around CROA-aligned billing models — for example pay-after-service and other
+            arrangements that fit how you deliver outcomes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing support</h3>
+          <p class="muted">
+            Built for monthly service plans and ongoing client programs.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback mitigation tools</h3>
+          <p class="muted">
+            Monitoring systems and dispute-reduction strategies so chargebacks do not define your profile overnight.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term accounts</h3>
+          <p class="muted">
+            Our goal is to keep you processing — not constantly reapplying after every review.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Multi-MID and backup solutions</h3>
+          <p class="muted">
+            Layered infrastructure where underwriting allows — so you are not dependent on a single MID.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for credit repair businesses like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Credit repair companies</li>
+        <li>Credit counseling services</li>
+        <li>Debt-related services</li>
+        <li>Financial consulting businesses</li>
+        <li>Subscription-based credit programs</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you bill monthly, per deletion, or use hybrid models — we can structure a conversation around your
+        business.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Quick application, compliance-aware underwriting, then go live.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your credit repair business, billing model, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with bank appetite for your compliance and risk profile.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a stable merchant account built for credit repair — with clear reserve and monitoring
+            expectations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by credit repair professionals</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with named testimonials when you have them — real quotes lift conversions in this vertical.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            “We finally found a processor that understands CROA compliance.”
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            “No more shutdowns — just consistent, reliable processing.”
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process credit repair payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing and subscription management</h3>
+          <p class="muted">Monthly plans with clear billing and dispute posture.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Compliance-friendly payment structures</h3>
+          <p class="muted">Conversations aligned with how credit services are billed and delivered.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a termination event.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment gateways</h3>
+          <p class="muted">Checkout flows that match how you sell credit services.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Plan for growth with underwriting instead of surprise holds.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Domestic and offshore processing options</h3>
+          <p class="muted">Flexible placement where your entity and bank stack support it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why credit repair businesses choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk financial services focus</h3>
+          <p class="muted">We specialize in categories mass-market processors avoid.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">CROA and billing fluency</h3>
+          <p class="muted">We understand what issuers and partners ask about in credit services.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Bank relationships others do not have</h3>
+          <p class="muted">Partnerships built for restricted verticals.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable, long-term systems</h3>
+          <p class="muted">Processing meant to grow with you — not reset every quarter.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Most processors avoid credit repair. We are built for it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop getting declined. Start processing today.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a credit repair merchant account designed for compliance, stability, and growth. Apply now or call — we
+          speak high-risk fluently.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Credit repair payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

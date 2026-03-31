@@ -1,0 +1,382 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/content-creator-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Content creator payment processing")}`;
+
+const pageTitle = "Content creator payment processing | Solvanta Pay";
+const pageDescription =
+  "Payment processing for creators, influencers, and digital brands. Creator merchant accounts, subscription billing, chargeback-aware support — influencer payment processing and digital product gateways.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Content creator payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can I get approved if I sell digital products or coaching?",
+    a: "Yes. We work with digital businesses and creator monetization models — courses, coaching, memberships, and similar offers — subject to underwriting and bank partner appetite.",
+  },
+  {
+    q: "What if I've been shut down by Stripe or PayPal?",
+    a: "That is common. Many of our clients come to us after being dropped by traditional processors. We map your model to high-risk-friendly placement when documentation supports it.",
+  },
+  {
+    q: "Do you support subscriptions and recurring billing?",
+    a: "Yes. We provide solutions designed for recurring revenue — memberships, communities, and ongoing programs — with clear billing and dispute expectations.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Typically 24–72 hours for many applications, depending on your business complexity and how complete your documentation is. Underwriting timing can vary.",
+  },
+  {
+    q: "Do you integrate with funnels and platforms?",
+    a: "Yes. We support a wide range of checkout systems, funnels, and integrations so you can keep your stack while we align the merchant account.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Creators & digital brands</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 1rem 0;">
+          Content creator payment processing that scales with you
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Monetizing your audience should not put your business at risk. We provide stable, high-risk-friendly payment
+          solutions for content creators, influencers, and digital brands.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for creator processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for creators and digital monetization</li>
+          <li>Subscription and recurring billing support</li>
+          <li>Chargeback-aware solutions</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Placement for memberships, courses, and digital offers</li>
+            <li>Underwriting that understands funnel and subscription economics</li>
+            <li>Backup and multi-MID strategies where underwriting allows</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Content on this site is informational and not legal advice. Underwriting determines final approval and
+            pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why content creators struggle to process payments</h2>
+      <p class="muted" style="max-width: 62ch;">
+        As soon as you start monetizing your audience — especially at scale — traditional processors begin to flag your
+        business.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns without warning</h3>
+          <p class="muted">
+            Platforms like Stripe, PayPal, and Square often shut down creator accounts due to risk signals or unclear
+            business models.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High chargeback rates</h3>
+          <p class="muted">
+            Digital products, coaching, and subscriptions often lead to disputes — putting your account under scrutiny.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription billing issues</h3>
+          <p class="muted">
+            Recurring revenue can trigger risk flags when billing descriptors, cancellation paths, or fulfillment are not
+            aligned with issuer expectations.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Platform restrictions</h3>
+          <p class="muted">
+            Niches like coaching, relationship advice, fitness, and similar verticals are often classified as high-risk.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scaling problems</h3>
+          <p class="muted">
+            As revenue grows, processors may increase reserves, delay payouts, or terminate accounts instead of scaling
+            with you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for content creators and digital brands</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We understand how creators monetize — and we build processing solutions that support your growth.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk-friendly merchant accounts</h3>
+          <p class="muted">
+            We work with banks that understand digital businesses, coaching, and content monetization.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term processing</h3>
+          <p class="muted">
+            Accounts structured for sustainability — not a quick approval that vanishes at the first review.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing support</h3>
+          <p class="muted">
+            Built for memberships, communities, and ongoing programs.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback mitigation tools</h3>
+          <p class="muted">
+            Alerts, monitoring, and prevention strategies so disputes do not define your profile overnight.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible setup options</h3>
+          <p class="muted">
+            Domestic and offshore solutions based on your business model and scale.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Multi-MID and backup processing</h3>
+          <p class="muted">
+            Redundancy as you grow — so one flag does not end revenue.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for modern content creators</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Influencers and personal brands</li>
+        <li>Course creators and educators</li>
+        <li>Coaching programs (fitness, business, relationships, and more)</li>
+        <li>Membership communities (Discord, Skool, Kajabi, and similar)</li>
+        <li>Digital product sellers (ebooks, templates, guides)</li>
+        <li>Subscription-based content platforms</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you sell through funnels, landing pages, or platforms — we integrate with common stacks so you keep your
+        flow while we align the merchant account.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Apply once — we handle the underwriting dialogue.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your content, monetization model, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with bank appetite for your business type and risk profile.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a stable merchant account built for creators — with clear monitoring and reserve expectations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by high-growth digital businesses</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials when you have them — illustrative examples below.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            “We scaled past $100K/month without worrying about getting shut down.”
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            “Finally found a processor that understands digital products.”
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to monetize your audience</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing support</h3>
+          <p class="muted">Memberships and repeat buyers with clear billing policies.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Funnel and checkout integrations</h3>
+          <p class="muted">Work with the funnels and pages you already use where partners allow.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a profile problem.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Plan for growth with underwriting instead of surprise holds.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International payment support</h3>
+          <p class="muted">Sell globally where your entity and bank stack support it.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment gateways</h3>
+          <p class="muted">Checkout experiences aligned with how digital products are sold.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why content creators choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk digital focus</h3>
+          <p class="muted">We specialize in high-risk digital businesses — not generic retail onboarding.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Creator monetization fluency</h3>
+          <p class="muted">We speak courses, coaching, memberships, and content-led offers.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Bank relationships others do not have</h3>
+          <p class="muted">Partnerships for categories mass-market processors avoid.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable, long-term systems</h3>
+          <p class="muted">Processing built to grow with you — not expire at the next review.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Most processors do not understand creators. We do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop worrying about shutdowns. Start scaling.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a creator-friendly merchant account built for stability and growth. Apply now or call — we speak
+          high-risk fluently.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Content creator payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -180,6 +180,60 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
+    slug: "home-services",
+    title: "Home Services",
+    risk: "low",
+    description:
+      "Payment processing for contractors and service pros: mobile acceptance, invoices, deposits, and job-based billing.",
+    tagline: "Get paid in the field with funding clarity and tools that match how jobs run.",
+    painPoints: [
+      "Cash flow depends on collecting on-site and at milestones.",
+      "Invoicing and card-not-present flows can drive disputes if expectations are unclear.",
+      "Seasonal swings and job size shift average tickets and underwriting posture.",
+    ],
+    valueProps: [
+      {
+        title: "Field-first workflows",
+        body: "Mobile, invoicing, and deposit patterns documented for underwriting.",
+      },
+      {
+        title: "Faster funding",
+        body: "Settlement expectations you can reconcile against payroll and materials.",
+      },
+      {
+        title: "Simple operations",
+        body: "Tools that work on the truck—not only at a desk.",
+      },
+    ],
+  },
+  {
+    slug: "accounting-cpa-firms",
+    title: "Accounting & CPA",
+    risk: "low",
+    description:
+      "Payment processing for CPA firms, bookkeepers, and accounting practices: retainers, recurring billing, and secure client payments.",
+    tagline: "Billing that matches recurring client work — with clear funding and professional-grade security expectations.",
+    painPoints: [
+      "Retainers and monthly engagements need predictable recurring billing.",
+      "Client expectations for cards and payment links keep rising.",
+      "Seasonal tax volume creates spikes that processors must understand upfront.",
+    ],
+    valueProps: [
+      {
+        title: "Retainer-ready flows",
+        body: "We document how you bill — monthly, project, or seasonally — for underwriting.",
+      },
+      {
+        title: "Collections clarity",
+        body: "Invoicing and payment links that reduce back-and-forth on fees.",
+      },
+      {
+        title: "Security posture",
+        body: "Processor-aligned practices for cardholder data — alongside your firm’s own compliance obligations.",
+      },
+    ],
+  },
+  {
     slug: "creator-content",
     title: "Creator Content",
     risk: "high",
@@ -365,6 +419,33 @@ export const INDUSTRIES: Industry[] = [
       {
         title: "Monitoring partnership",
         body: "Early signals when dispute patterns shift so you can adjust UX and support.",
+      },
+    ],
+  },
+  {
+    slug: "saas",
+    title: "SaaS",
+    risk: "high",
+    description:
+      "Merchant accounts for SaaS and subscription software: recurring billing, usage-based pricing, and high-volume scaling.",
+    tagline: "Subscription-heavy platforms need processors that understand MRR, churn, and scale.",
+    painPoints: [
+      "Rapid growth and volume spikes can trigger issuer and processor scrutiny.",
+      "Complex billing — trials, tiers, usage — adds dispute and refund edge cases.",
+      "Global customers add FX and cross-border dispute complexity.",
+    ],
+    valueProps: [
+      {
+        title: "Billing model clarity",
+        body: "We document how you bill, cap usage, and handle refunds for underwriting.",
+      },
+      {
+        title: "Stability at scale",
+        body: "Accounts structured for growth — not starter MIDs that break at volume.",
+      },
+      {
+        title: "Chargeback partnership",
+        body: "Monitoring and alerts when subscription disputes trend up.",
       },
     ],
   },

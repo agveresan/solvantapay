@@ -1,0 +1,384 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/accounting-cpa-firm-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Accounting payment processing")}`;
+
+const pageTitle = "Accounting payment processing | Solvanta Pay";
+const pageDescription =
+  "CPA payment processing and accounting merchant accounts for firms and bookkeepers. Retainers, recurring billing, secure invoicing — payment processing for accountants and tax practices.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Accounting and CPA firm payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can accounting firms get approved for payment processing?",
+    a: "Yes. We work with a wide range of accounting and CPA firms — subject to underwriting and bank partner appetite.",
+  },
+  {
+    q: "Do you support recurring billing and retainers?",
+    a: "Yes. Monthly billing, engagement fees, and subscription-style services are common — we help align descriptors, renewal notices, and cancellation paths with processor expectations.",
+  },
+  {
+    q: "Is your system secure for financial data?",
+    a: "We focus on secure, compliance-aware card acceptance aligned with PCI and processor rules. Your professional obligations (e.g., client confidentiality, data handling policies) remain with your firm — we discuss how payment tools fit your stack.",
+  },
+  {
+    q: "Can I accept payments online and in-office?",
+    a: "Yes. We support multiple payment methods and channels — card-not-present, payment links, and in-person — where your program allows.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many firms see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">CPAs, accountants & bookkeepers</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Spend less time chasing payments and more time serving clients
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Payment processing built for accounting and CPA firms
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running an accounting or CPA firm? We provide secure, reliable payment processing designed for accountants,
+          bookkeepers, and financial professionals.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Perfect for monthly retainers and ongoing services — with invoicing and payment links that make collections
+          predictable, not painful.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for accounting processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for accountants and CPA firms</li>
+          <li>Recurring billing and retainer support</li>
+          <li>Secure, compliance-aware processing</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">Professional firms</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Accuracy and trust — underwriting that understands engagement-based billing</li>
+            <li>Cash flow — fewer stalled invoices and clearer settlement timing</li>
+            <li>Client experience — modern pay options without admin overhead</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            We provide merchant services, not accounting or legal advice. Your professional standards and data policies
+            remain with your firm.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why accounting firms struggle with payments</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Accounting and CPA firms require accuracy, trust, and efficiency — yet many still rely on outdated payment
+        systems.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Manual invoicing and delayed payments</h3>
+          <p class="muted">
+            Waiting on invoices and checks slows down your cash flow.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Limited payment flexibility</h3>
+          <p class="muted">
+            Clients expect modern payment options, but many firms lack them.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing challenges</h3>
+          <p class="muted">
+            Monthly retainers and ongoing services require flexible billing systems.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Security and trust concerns</h3>
+          <p class="muted">
+            Handling financial relationships requires secure, reliable payment processing.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Inefficient systems</h3>
+          <p class="muted">
+            Outdated tools create unnecessary admin work and missed payments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for accounting and CPA firms</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We provide payment solutions designed to simplify billing, improve collections, and enhance client experience.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure, compliance-aware processing</h3>
+          <p class="muted">
+            Payment systems suited to financial professionals and cardholder data expectations — within processor rules.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing and retainer support</h3>
+          <p class="muted">
+            Monthly services, subscriptions, and ongoing client work.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Faster client payments</h3>
+          <p class="muted">
+            Reduce delays with modern invoicing and payment tools.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible payment options</h3>
+          <p class="muted">
+            Accept payments online, in-office, or via secure payment links.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Improved cash flow</h3>
+          <p class="muted">
+            Get paid faster and more consistently.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable for growing firms</h3>
+          <p class="muted">
+            Support your firm as your client base expands.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for accounting professionals like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>CPA firms</li>
+        <li>Accounting firms</li>
+        <li>Bookkeeping services</li>
+        <li>Tax preparation businesses</li>
+        <li>Financial consultants</li>
+        <li>Payroll service providers</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you bill monthly, per project, or seasonally — we can support your workflow.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — aligned to how professional services firms bill.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your firm, services, and billing structure.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Setup and integration</h3>
+          <p class="muted">
+            We match you with the best tools for your workflow.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Start getting paid faster</h3>
+          <p class="muted">
+            Launch with a reliable payment system built for your firm.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by accounting and financial professionals</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials for stronger trust.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We simplified our billing and improved collections.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;Secure, reliable payments for our clients.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process accounting payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Online invoicing and payment links</h3>
+          <p class="muted">Send a link — get paid without the chase.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring billing and subscriptions</h3>
+          <p class="muted">Retainers and ongoing engagements.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment processing</h3>
+          <p class="muted">Card acceptance with clear security expectations.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">In-office and remote payment options</h3>
+          <p class="muted">Meet clients where they pay.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fast deposit funding</h3>
+          <p class="muted">Settlement timelines explained in plain language.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Integration-friendly solutions</h3>
+          <p class="muted">Work with common practice tools where your stack allows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why accounting firms choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Financial services and client expectations</h3>
+          <p class="muted">We speak retainer, engagement, and seasonal volume.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Security and reliability</h3>
+          <p class="muted">Stable processing for firms that cannot afford surprises.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible, modern payment solutions</h3>
+          <p class="muted">Cards and links that match how clients want to pay.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Long-term firm growth</h3>
+          <p class="muted">Accounts structured for adding partners and clients.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Your payment system should simplify your operations — not add complexity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Get paid faster. Simplify your billing.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Upgrade to a payment solution built for accounting professionals.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Accounting payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,389 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/fantasy-sports-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Fantasy sports payment processing")}`;
+
+const pageTitle = "Fantasy sports payment processing | Solvanta Pay";
+const pageDescription =
+  "DFS payment processing and fantasy sports merchant accounts. Pick'em apps, contest billing, subscription access — high-risk fantasy sports payment gateway for sports platforms.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Fantasy sports payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can fantasy sports platforms get approved for payment processing?",
+    a: "Yes. Fantasy sports is high-risk for many banks, but we work with partners that understand DFS and sports-based platforms — subject to underwriting, licensing where applicable, and bank partner appetite.",
+  },
+  {
+    q: "Do you support real-money contests and entry fees?",
+    a: "Often yes, depending on your structure, jurisdiction, and compliance posture. We help you document the model clearly for underwriting — final placement is determined in review.",
+  },
+  {
+    q: "What if my platform has been shut down before?",
+    a: "That is common. Many fantasy platforms come to us after being dropped by traditional processors. We map your billing and contest flow to the right underwriting conversation.",
+  },
+  {
+    q: "Do you support subscriptions and memberships?",
+    a: "Yes. Recurring billing for premium access, picks, and content is supported — with clear descriptors and cancellation paths.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many platforms see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">DFS, pick&apos;em & sports platforms</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Built for compliant fantasy sports platforms
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Fantasy sports payment processing that keeps you live
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running a fantasy sports platform or pick&apos;em app? We provide stable, high-risk-friendly payment solutions
+          built for fantasy sports, DFS, and sports-based platforms.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Running DFS, pick&apos;em, or subscription-based sports tools? We have you covered — legality and compliance
+          vary by model; we focus on clear underwriting and stable placement.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for fantasy sports processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for fantasy sports and DFS platforms</li>
+          <li>Subscription and contest-based billing support</li>
+          <li>Real-money platform-friendly solutions</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">At a glance</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Underwriting that understands contest, entry-fee, and subscription flows</li>
+            <li>Chargeback-aware posture for disputed outcomes and renewals</li>
+            <li>Multi-MID and backup strategies where underwriting allows</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Content on this site is informational and not legal advice. Legality depends on jurisdiction and licensing;
+            underwriting determines final approval and pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why fantasy sports platforms struggle to process payments</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Fantasy sports businesses sit between gaming, entertainment, and real-money movement — which makes payment
+        processing especially sensitive.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Gaming risk classification</h3>
+          <p class="muted">
+            Even legal fantasy sports platforms are often flagged as high-risk because they resemble gambling in issuer
+            eyes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Account shutdowns without warning</h3>
+          <p class="muted">
+            Traditional processors frequently shut down DFS and pick&apos;em platforms due to policy concerns.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Real-money transaction scrutiny</h3>
+          <p class="muted">
+            Entry fees, prizes, and payouts attract stricter underwriting and monitoring.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback and dispute risk</h3>
+          <p class="muted">
+            Users disputing contest outcomes or subscription charges can increase risk exposure.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Limited payment options</h3>
+          <p class="muted">
+            Many processors will not support fantasy sports or restrict key features.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for fantasy sports platforms</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We understand how fantasy sports products are positioned — and we build processing systems meant to support your
+        platform long-term.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-risk merchant account approval</h3>
+          <p class="muted">
+            We work with banks that understand fantasy sports, DFS, and sports-based platforms.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Real-money platform support</h3>
+          <p class="muted">
+            Solutions aimed at entry fees, subscriptions, and prize-based systems — where underwriting and compliance
+            allow.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable, long-term processing</h3>
+          <p class="muted">
+            Accounts structured for your business model — fewer avoidable shutdowns when the story is documented.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and billing flexibility</h3>
+          <p class="muted">
+            Support for memberships, premium picks, and recurring access models.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback mitigation tools</h3>
+          <p class="muted">
+            Monitoring, alerts, and prevention strategies tailored to contest and subscription disputes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Multi-MID and backup processing</h3>
+          <p class="muted">
+            Redundancy as you scale — where underwriting allows.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for fantasy sports businesses like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Daily Fantasy Sports (DFS) platforms</li>
+        <li>Pick&apos;em and prop-based apps</li>
+        <li>Sports analytics and prediction tools</li>
+        <li>Subscription-based sports content platforms</li>
+        <li>Fantasy leagues with paid entry</li>
+        <li>Sports betting-adjacent platforms (where permitted)</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you run an app, website, or custom platform — we integrate with common stacks so operations stay yours
+        while we align the merchant account.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        One application — fantasy-aware underwriting — then go live.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your platform, billing model, and monthly volume.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We match you with bank appetite for your risk profile and structure.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Get approved and start processing</h3>
+          <p class="muted">
+            Launch with a stable merchant account built for your platform — with clear monitoring expectations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by high-growth sports platforms</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials when available — trust and uptime matter in this vertical.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            “We finally found a processor that understands fantasy sports.”
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            “Stable payments without worrying about getting shut down.”
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process fantasy sports payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Subscription and recurring billing support</h3>
+          <p class="muted">Memberships and renewals with clear policies.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Contest entry and fee processing</h3>
+          <p class="muted">Flows aligned with how you run contests and payouts.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility before disputes become a profile problem.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling capability</h3>
+          <p class="muted">Plan for spikes and seasonality with underwriting.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International payment support</h3>
+          <p class="muted">Global users where your entity and bank stack support it.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Secure payment gateways</h3>
+          <p class="muted">Checkout aligned with app and web experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why fantasy sports platforms choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Gaming-adjacent and high-risk focus</h3>
+          <p class="muted">We specialize in verticals generic processors mishandle.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">DFS and real-money structures</h3>
+          <p class="muted">We understand entry fees, prizes, and subscription access models.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Bank relationships others do not have</h3>
+          <p class="muted">Partnerships for restricted and sports-tech categories.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Scalable, long-term systems</h3>
+          <p class="muted">Processing built for growth — not a disposable MID.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Most processors do not understand fantasy sports. We do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop getting shut down. Keep your platform live.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a fantasy sports-friendly merchant account designed for stability, compliance, and growth. Apply now or
+          call — we speak high-risk fluently.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Fantasy sports payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

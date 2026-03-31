@@ -1,0 +1,384 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import heroVisual from "../../assets/images/hero-placeholder.png";
+import { getSiteUrl } from "../../lib/site";
+
+const site = getSiteUrl();
+const salesTel = "+18556002419";
+const canonical = new URL("/bar-restaurant-payment-processing/", site).href;
+const applyHref = `/apply/?industry=${encodeURIComponent("Restaurant payment processing")}`;
+
+const pageTitle = "Restaurant payment processing | Solvanta Pay";
+const pageDescription =
+  "Restaurant merchant account and bar payment processing. POS integrations, tips, tabs, split payments, fast deposits — reliable payment processing for restaurants, bars, and hospitality.";
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonical,
+};
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Restaurant and bar payment processing",
+      item: canonical,
+    },
+  ],
+};
+
+const faqCopy = [
+  {
+    q: "Can restaurants get approved for payment processing?",
+    a: "Yes. We work with a wide range of restaurants, bars, and hospitality businesses — from single locations to multi-unit groups — subject to underwriting and bank partner appetite.",
+  },
+  {
+    q: "Do you integrate with POS systems?",
+    a: "Yes. We support many leading restaurant POS systems and terminal setups — final hardware and software pairing depends on your processor, gateway, and equipment choices.",
+  },
+  {
+    q: "How fast do I get my deposits?",
+    a: "Funding speed depends on your processing program, batch timing, and bank partner. We focus on fast funding options where available and clear expectations on settlement — so you can plan daily cash flow.",
+  },
+  {
+    q: "Do you support tips and split payments?",
+    a: "Yes. Our setups are designed for real-world restaurant scenarios — tips, tabs, and splits — aligned with your POS and processor capabilities.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "Many businesses see a decision within 24–72 hours when applications and documents are complete. Timing depends on underwriting and bank response times.",
+  },
+] as const;
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCopy.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[webPageLd, breadcrumbLd, faqLd]}>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="pill">Restaurants, bars & hospitality</span>
+        <p class="eyebrow" style="margin: 0.75rem 0 0; font-size: 0.78rem;">
+          Lower your processing costs without sacrificing performance
+        </p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 0.5rem 0 1rem;">
+          Restaurant and bar payment processing built for speed and reliability
+        </h1>
+        <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
+          Running a bar or restaurant? We provide fast, reliable payment processing designed for high-volume service,
+          seamless transactions, and better cash flow.
+        </p>
+        <p class="muted" style="font-size: 0.98rem; max-width: 52ch; margin-top: 0.75rem;">
+          Keep lines moving with fast, reliable payments — so your front of house stays focused on guests, not glitchy
+          terminals or surprise holds.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+          <a class="btn btn--primary" href={applyHref}>Get approved for restaurant processing</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+        </div>
+        <ul class="trust-row trust-row--four" aria-label="Trust highlights">
+          <li>Built for restaurants, bars, and hospitality</li>
+          <li>Fast, reliable POS integrations</li>
+          <li>Tip, tab, and split payment support</li>
+          <li>Fast approvals — often 24–72 hours when docs are complete</li>
+        </ul>
+      </div>
+      <div class="hero__aside">
+        <Picture
+          src={heroVisual}
+          alt="Abstract brand visual suggesting structured payment operations"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 900px) min(40vw, 540px), 100vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpeg"
+          quality={80}
+          loading="eager"
+          decoding="async"
+          class="hero__visual"
+        />
+        <div class="card card--glass">
+          <div class="eyebrow">Operations first</div>
+          <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
+            <li>Speed at the register — fewer bottlenecks during peak hours</li>
+            <li>Fee transparency — protect margins on every ticket</li>
+            <li>Funding clarity — know what to expect on deposits so daily cash flow is predictable</li>
+          </ul>
+          <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
+            Rates, funding times, and equipment options depend on your program and underwriting. We align the stack to
+            how you actually run service.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why bars and restaurants outgrow their payment processor</h2>
+      <p class="muted" style="max-width: 62ch;">
+        In a fast-paced environment, your payment system needs to keep up. Many restaurants struggle with outdated or
+        unreliable processing solutions.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Slow or unreliable systems</h3>
+          <p class="muted">
+            Lagging terminals or outages disrupt service and frustrate customers.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High processing fees</h3>
+          <p class="muted">
+            Small percentage differences add up — especially at high ticket volume.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Limited POS flexibility</h3>
+          <p class="muted">
+            Not every processor integrates cleanly with your POS or service flow.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Cash flow delays</h3>
+          <p class="muted">
+            Delayed deposits or unpredictable funding make daily operations harder.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Poor support when it matters</h3>
+          <p class="muted">
+            Friday night is not the time for a ticket queue — you need responsive help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for bars and restaurants</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We provide payment solutions designed for speed, efficiency, and reliability in high-volume environments.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Fast, reliable payment processing</h3>
+          <p class="muted">
+            Keep lines moving with quick, seamless transactions.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">POS system compatibility</h3>
+          <p class="muted">
+            Integrate with leading restaurant POS systems and hardware — where your program supports it.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Tip, tab, and split payment support</h3>
+          <p class="muted">
+            Handle real-world restaurant scenarios without workarounds.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Competitive, transparent pricing</h3>
+          <p class="muted">
+            Optimize processing costs and protect margins — with clear statements, not mystery fees.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fast funding and cash flow stability</h3>
+          <p class="muted">
+            Deposit options that support daily operations — timing explained upfront.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Dedicated support</h3>
+          <p class="muted">
+            Responsive support when volume spikes and issues cannot wait.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href={applyHref}>Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built for restaurants and bars like yours</h2>
+      <p class="muted" style="max-width: 62ch;">We work with:</p>
+      <ul style="margin: 1rem 0 0; padding-left: 1.25rem; max-width: 62ch;">
+        <li>Full-service restaurants</li>
+        <li>Quick-service restaurants (QSR)</li>
+        <li>Bars, pubs, and nightclubs</li>
+        <li>Cafes and coffee shops</li>
+        <li>Food trucks and mobile vendors</li>
+        <li>Multi-location restaurant groups</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem; max-width: 62ch;">
+        Whether you process at the counter, table, or on the go — we align processing to your floor plan and volume.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        From application to first batch — built around your service model.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply online</h3>
+          <p class="muted">
+            Tell us about your business, setup, and payment needs.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Setup and integration</h3>
+          <p class="muted">
+            We match you with the best POS and processing solution for your environment.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Start accepting payments</h3>
+          <p class="muted">
+            Launch with a fast, reliable system built for your restaurant.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Trusted by restaurants and hospitality businesses</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Replace with real testimonials for strong local trust signals.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;Faster checkout and better reliability during peak hours.&rdquo;
+          </p>
+        </blockquote>
+        <blockquote class="card" style="margin: 0;">
+          <p style="margin: 0; font-style: italic;">
+            &ldquo;We saved on fees and improved our daily operations.&rdquo;
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process restaurant payments</h2>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">POS system integrations</h3>
+          <p class="muted">Keep your stack connected end to end.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Contactless and mobile payments</h3>
+          <p class="muted">Tap, dip, and pay-at-table where supported.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Tip and tab management</h3>
+          <p class="muted">Workflows that match how your team runs service.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Split payment support</h3>
+          <p class="muted">Share checks without slowing the room.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fast deposit funding</h3>
+          <p class="muted">Options aligned with your funding needs — terms in writing.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and chargeback monitoring</h3>
+          <p class="muted">Visibility when patterns shift.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why restaurants choose Solvanta Pay</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume service environments</h3>
+          <p class="muted">We understand rush hours, turns, and repeat tickets.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Speed and reliability</h3>
+          <p class="muted">Processing that keeps up with the floor — not the other way around.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Flexible, cost-effective solutions</h3>
+          <p class="muted">Right-size pricing and equipment for your concept.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Ongoing support</h3>
+          <p class="muted">A partner for openings, remodels, and second locations.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 1.5rem;">
+        <p class="muted" style="margin: 0; font-size: 1.05rem;">
+          Your payment system should keep up with your business — not slow it down.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Keep service moving. Get paid faster.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Upgrade to a payment system built for speed, reliability, and better margins.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href={applyHref}>Apply now</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>Speak with a specialist</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Restaurant payment processing FAQ</h2>
+      <div class="grid-2" style="margin-top: 1.25rem;">
+        {faqCopy.map((item) => (
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-top: 0;">{item.q}</h3>
+            <p class="muted" style="margin-bottom: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
