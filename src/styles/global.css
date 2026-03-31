@@ -537,6 +537,17 @@ body > main {
   }
 }
 
+.grid-2 {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .grid-3 {
   display: grid;
   gap: 1.25rem;
@@ -562,6 +573,115 @@ body > main {
 
 .section--tight {
   padding: 2rem 0;
+}
+
+.section--surface {
+  background: rgba(11, 30, 63, 0.03);
+  border-block: 1px solid rgba(11, 30, 63, 0.05);
+}
+
+.trust-row {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-slate);
+}
+
+.trust-row li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.trust-row li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+@media (min-width: 720px) {
+  .trust-row--four {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem 1.5rem;
+  }
+
+  .trust-row--four li {
+    padding-left: 1rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .trust-row--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 52rem;
+  }
+}
+
+.industry-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.65rem;
+}
+
+a.industry-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(11, 30, 63, 0.1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.industry-chip:hover,
+a.industry-chip:focus-visible {
+  border-color: var(--color-secondary);
+  box-shadow: 0 2px 12px rgba(31, 138, 158, 0.15);
+  color: var(--color-primary);
+}
+
+.step-card {
+  position: relative;
+  padding-top: 0.25rem;
+}
+
+.step-card__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10px;
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  background: rgba(76, 201, 193, 0.25);
+  margin-bottom: 0.65rem;
+}
+
+.hub-cta-strip__title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin: 0 0 0.35rem;
 }
 
 .eyebrow {

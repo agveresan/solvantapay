@@ -5,13 +5,14 @@ import heroVisual from "../assets/images/hero-placeholder.png";
 import { getSiteUrl } from "../lib/site";
 
 const site = getSiteUrl();
+const salesTel = "+18556002419";
 const orgLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Solvanta Pay",
   url: site,
   description:
-    "Payment processing for high-risk merchants — underwriting, compliance, and reliable settlement workflows.",
+    "High-risk merchant accounts and payment processing focused on approvals, stable relationships, and underwriting-led onboarding — domestic and offshore options.",
 };
 const webLd = {
   "@context": "https://schema.org",
@@ -41,12 +42,70 @@ const faqLd = {
           "No. Any indicative range depends on underwriting, bank partner appetite, and risk review. Final pricing is confirmed after application review.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Can I get approved with bad history or prior declines?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Often yes, depending on your current model, documentation, and bank appetite. We specialize in high-risk verticals and work with merchants who have been declined elsewhere — outcomes still depend on underwriting.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you work with offshore businesses?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "We can discuss domestic and offshore placement where it fits your entity structure and compliance profile. The right setup is determined during application review.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are your fees?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Pricing depends on vertical, processing history, volume, and risk. We share indicative ranges when appropriate; final rates are confirmed after underwriting.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does approval take?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Many applications move quickly once information is complete. Exact timing depends on underwriting, bank partner response, and how complete your documentation is.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you support merchants with high chargeback ratios?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "We work with elevated chargeback profiles when there is a clear mitigation story and monitoring plan. Underwriting and bank partners set the final terms.",
+      },
+    },
   ],
 };
+
+const industryLinks: { href: string; label: string }[] = [
+  { href: "/peptide-payment-processing/", label: "Peptides" },
+  { href: "/industries/cbd/", label: "CBD" },
+  { href: "/industries/credit-repair/", label: "Credit repair" },
+  { href: "/industries/creator-content/", label: "Coaching & info products" },
+  { href: "/industries/ecommerce/", label: "E-commerce & high-ticket" },
+  { href: "/industries/travel/", label: "Travel" },
+  { href: "/industries/telemedicine/", label: "Telemedicine" },
+  { href: "/industries/online-dating/", label: "Subscription & dating" },
+  { href: "/industries/firearms/", label: "Firearms" },
+  { href: "/industries/vape/", label: "Vape" },
+];
 ---
 <BaseLayout
-  title="Solvanta Pay | High-risk merchant payment processing"
-  description="Underwriting-minded payment processing for high-risk merchants. Clear pricing conversations, compliance-aware onboarding, and dependable operations."
+  title="Solvanta Pay | High-risk payment processing that gets you approved"
+  description="Offshore and domestic merchant accounts for restricted industries. Underwriting-led onboarding, chargeback-aware support, and stable processing relationships."
   jsonLd={[orgLd, webLd, faqLd]}
 >
   <section class="hero">
@@ -54,16 +113,22 @@ const faqLd = {
       <div>
         <span class="pill">High-risk specialists</span>
         <h1 style="font-size: clamp(2rem, 4vw, 2.85rem); margin: 1rem 0;">
-          Payments that feel controlled — even when your vertical is not.
+          High-risk payment processing that actually gets you approved
         </h1>
         <p class="muted" style="font-size: 1.1rem; max-width: 52ch;">
-          Solvanta Pay helps serious operators stabilize card acceptance with underwriting-aware onboarding,
-          transparent fee conversations, and operational discipline.
+          Offshore and domestic merchant accounts, chargeback-aware support, and stable processing for industries
+          most processors will not touch. See if you qualify in minutes — we built our stack around businesses like
+          yours.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
-          <a class="btn btn--primary" href="/apply/">Start an application</a>
-          <a class="btn btn--ghost" href="/solutions/">View solutions</a>
+          <a class="btn btn--primary" href="/apply/">Apply in minutes</a>
+          <a class="btn btn--ghost" href={`tel:${salesTel}`}>Talk to a specialist</a>
         </div>
+        <ul class="trust-row" aria-label="Trust highlights">
+          <li>Fast underwriting response</li>
+          <li>Built for restricted verticals</li>
+          <li>We work with merchants others decline</li>
+        </ul>
       </div>
       <div class="hero__aside">
         <Picture
@@ -79,12 +144,12 @@ const faqLd = {
           class="hero__visual"
         />
         <div class="card card--glass">
-          <div class="eyebrow">What we optimize for</div>
+          <div class="eyebrow">What we engineer for</div>
           <ul style="margin: 1rem 0 0; padding-left: 1.1rem;">
-            <li>Chargeback posture and monitoring readiness</li>
-            <li>Reserve and settlement clarity</li>
-            <li>Compliance-friendly customer communication</li>
-            <li>Reliable processing relationships</li>
+            <li>Approval paths that match your real business model</li>
+            <li>Stable MIDs and backup strategies where underwriting allows</li>
+            <li>Chargeback monitoring and clearer reserve expectations</li>
+            <li>Domestic and offshore options when they fit your profile</li>
           </ul>
           <p class="muted" style="margin-top: 1rem; font-size: 0.95rem;">
             Content on this site is informational and not legal advice.
@@ -94,28 +159,250 @@ const faqLd = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--surface">
     <div class="container">
-      <h2 style="margin-bottom: 0.5rem;">Built for tricky verticals — without sounding risky</h2>
+      <h2 style="margin-bottom: 0.5rem;">Why high-risk businesses struggle to process payments</h2>
       <p class="muted" style="max-width: 62ch;">
-        Placeholder section: replace with your differentiated story, proof points, and process narrative.
+        If you have lived this, none of it is abstract — it is cash flow and survival.
       </p>
       <div class="grid-3" style="margin-top: 2rem;">
         <div class="card">
-          <h3 style="margin-top: 0;">Underwriting-first</h3>
-          <p class="muted">We align expectations early so applications move with fewer surprises.</p>
+          <h3 style="margin-top: 0;">Constant account shutdowns</h3>
+          <p class="muted">
+            Aggregator platforms can freeze or terminate accounts with little warning when their risk models change.
+          </p>
         </div>
         <div class="card">
-          <h3 style="margin-top: 0;">Operational clarity</h3>
-          <p class="muted">Reserves, fees, and monitoring requirements explained in plain language.</p>
+          <h3 style="margin-top: 0;">Declines and rejections</h3>
+          <p class="muted">
+            Traditional banks often do not understand subscription, nutraceutical, or digital-product models — so the
+            default answer is no.
+          </p>
         </div>
         <div class="card">
-          <h3 style="margin-top: 0;">Merchant-friendly tone</h3>
-          <p class="muted">Professional copy and support paths that respect operator time.</p>
+          <h3 style="margin-top: 0;">Rolling reserves and cash holds</h3>
+          <p class="muted">
+            Reserves can lock up revenue when you need it most, especially after a spike in volume or disputes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback pressure</h3>
+          <p class="muted">
+            One bad month can trigger scrutiny, higher reserves, or termination — even when the underlying business is
+            sound.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">No long-term stability</h3>
+          <p class="muted">
+            Without the right bank relationships, you are always one review away from losing processing entirely.
+          </p>
         </div>
       </div>
     </div>
   </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Built specifically for high-risk businesses</h2>
+      <p class="muted" style="max-width: 62ch;">
+        We do not just move money — we engineer stability with underwriting, documentation, and the right partners.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Strong approval focus</h3>
+          <p class="muted">
+            We work with elevated-risk profiles and prior declines when the story and docs support a path forward.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Stable merchant relationships</h3>
+          <p class="muted">
+            We prioritize durable setups and clear monitoring expectations instead of a quick account that disappears at
+            the first review.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Domestic and offshore options</h3>
+          <p class="muted">
+            Placement depends on your entity, vertical, and compliance profile — we discuss what actually fits.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback awareness</h3>
+          <p class="muted">
+            Alerts, mitigation habits, and transparent dialogue so you are not surprised when issuers push back.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Smarter reserve expectations</h3>
+          <p class="muted">
+            We explain holds and rolling reserves in plain language so you can plan cash flow with eyes open.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Multi-MID and backup thinking</h3>
+          <p class="muted">
+            Where underwriting allows, we help you think about redundancy so one flag does not end revenue.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">High-risk industries we work with</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Explore hubs for verticals we onboard often. Adult, nutraceuticals, and other specialized models — tell us your
+        story in the application and we will map you to the right underwriting conversation.
+      </p>
+      <div class="industry-chip-grid" style="margin-top: 1.5rem;">
+        {industryLinks.map((item) => (
+          <a class="industry-chip" href={item.href}>
+            {item.label}
+          </a>
+        ))}
+      </div>
+      <p style="margin-top: 1.25rem;">
+        <a class="btn btn--ghost" href="/industries/">View all industries</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Get approved in three simple steps</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Friction stays on our side — you submit once and we guide the rest.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">1</span>
+          <h3 style="margin-top: 0;">Apply</h3>
+          <p class="muted">
+            Short form: industry, volume, chargeback band, and how you process today so underwriting sees the full
+            picture.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">2</span>
+          <h3 style="margin-top: 0;">Underwriting review</h3>
+          <p class="muted">
+            We align your model with bank appetite, request clarifications when needed, and set expectations on timing
+            and terms.
+          </p>
+        </div>
+        <div class="card step-card">
+          <span class="step-card__num" aria-hidden="true">3</span>
+          <h3 style="margin-top: 0;">Approve and process</h3>
+          <p class="muted">
+            Get live with clear rules on monitoring, reserves, and support so you can scale with fewer surprises.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href="/apply/">Start your application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Why operators trust the process</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Real testimonials belong here when you have them. Until then, here is what we optimize for every day.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Underwriting-led onboarding</h3>
+          <p class="muted">Fewer surprises because we surface questions banks will ask before they ask them.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Plain-language economics</h3>
+          <p class="muted">Fees, reserves, and monitoring requirements explained so you can model cash flow honestly.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Partner-style dialogue</h3>
+          <p class="muted">Direct access to specialists who understand high-risk — not a generic support queue.</p>
+        </div>
+      </div>
+      <blockquote class="testimonial-placeholder card" style="margin-top: 2rem;">
+        <p style="margin: 0; font-style: italic;">
+          “After getting shut down elsewhere, Solvanta Pay helped us document our model and get back to stable
+          processing.”
+        </p>
+        <footer class="muted" style="margin-top: 0.75rem; font-size: 0.95rem; font-style: normal;">
+          — Replace with a named merchant testimonial when available
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin-bottom: 0.5rem;">Everything you need to process with confidence</h2>
+      <p class="muted" style="max-width: 62ch;">
+        Tools and posture matter as much as the gateway — we focus on both.
+      </p>
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3 style="margin-top: 0;">Fraud and monitoring readiness</h3>
+          <p class="muted">Stronger front-end discipline reduces avoidable disputes and issuer scrutiny.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Chargeback alerts and habits</h3>
+          <p class="muted">Catch patterns early and respond before ratios become a termination event.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Recurring and subscription support</h3>
+          <p class="muted">Billing models that issuers understand — clear descriptors and cancellation paths.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">High-volume scaling</h3>
+          <p class="muted">Capacity conversations tied to real growth, not surprise holds after a spike.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">International processing</h3>
+          <p class="muted">Cross-border selling where your entity and bank stack support it.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Gateway and integration flexibility</h3>
+          <p class="muted">Work with common stacks so operations and dev teams stay productive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <div class="card" style="max-width: 65ch;">
+        <h2 style="margin-top: 0;">Why Solvanta Pay</h2>
+        <p class="muted">
+          Most processors do not want your business. We specialize in high-risk — not as a side product, but as the
+          core of what we do. That means underwriting fluency, bank relationships built for restricted verticals, and
+          long-term solutions instead of a disposable MID that vanishes at the first review. If your model is legitimate
+          and you are willing to run it transparently, we want to help you get stable and scale.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-cta-strip">
+    <div class="hub-cta-strip__inner">
+      <div>
+        <h2 class="hub-cta-strip__title">Stop getting shut down. Start processing today.</h2>
+        <p class="muted" style="margin: 0; max-width: 48ch;">
+          Get a fast underwriting response once your application is complete. Questions first? Call us — we speak
+          high-risk fluently.
+        </p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a class="btn btn--primary" href="/apply/">Get approved today</a>
+        <a class="btn btn--ghost" href={`tel:${salesTel}`}>+1 (855) 600-2419</a>
+      </div>
+    </div>
+  </div>
 
   <section class="section section--tight">
     <div class="container">
@@ -123,13 +410,38 @@ const faqLd = {
       <div class="card prose">
         <h3 style="font-size: 1.1rem;">What is high-risk merchant processing?</h3>
         <p>
-          It is card acceptance for businesses in regulated, disputed, or elevated chargeback verticals where
-          issuers and acquirers apply stricter underwriting and monitoring.
+          It is card acceptance for businesses in regulated, disputed, or elevated chargeback verticals where issuers
+          and acquirers apply stricter underwriting and monitoring.
         </p>
         <h3 style="font-size: 1.1rem;">Are online quotes guaranteed?</h3>
         <p>
-          No. Any indicative range depends on underwriting, bank partner appetite, and risk review. Final
-          pricing is confirmed after application review.
+          No. Any indicative range depends on underwriting, bank partner appetite, and risk review. Final pricing is
+          confirmed after application review.
+        </p>
+        <h3 style="font-size: 1.1rem;">Can I get approved with bad history or prior declines?</h3>
+        <p>
+          Often yes, depending on your current model, documentation, and bank appetite. We specialize in high-risk
+          verticals and work with merchants who have been declined elsewhere — outcomes still depend on underwriting.
+        </p>
+        <h3 style="font-size: 1.1rem;">Do you work with offshore businesses?</h3>
+        <p>
+          We can discuss domestic and offshore placement where it fits your entity structure and compliance profile. The
+          right setup is determined during application review.
+        </p>
+        <h3 style="font-size: 1.1rem;">What are your fees?</h3>
+        <p>
+          Pricing depends on vertical, processing history, volume, and risk. We share indicative ranges when appropriate;
+          final rates are confirmed after underwriting.
+        </p>
+        <h3 style="font-size: 1.1rem;">How long does approval take?</h3>
+        <p>
+          Many applications move quickly once information is complete. Exact timing depends on underwriting, bank
+          partner response, and how complete your documentation is.
+        </p>
+        <h3 style="font-size: 1.1rem;">Do you support merchants with high chargeback ratios?</h3>
+        <p>
+          We work with elevated chargeback profiles when there is a clear mitigation story and monitoring plan.
+          Underwriting and bank partners set the final terms.
         </p>
       </div>
     </div>
